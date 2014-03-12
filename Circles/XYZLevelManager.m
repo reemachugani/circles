@@ -9,6 +9,10 @@
 #import "XYZLevelManager.h"
 #import "XYZMyScene.h"
 #import "XYZCircle.h"
+#import "XYZAnimation.h"
+#import "XYZBounceAnimation.h"
+
+
 
 @implementation XYZLevelManager
 
@@ -34,18 +38,59 @@
     return instance;
 }
 
+// method to procede to a new level, it adds a new circle to the scene and applies animation when called
 + (void) startNextLevel: (XYZMyScene*) scene
+{
+    XYZLevelManager* manager = [XYZLevelManager instance];
+    [manager incrementLevel];
+    
+    NSLog(@"at level %ld", (long)manager.currentLevel);
+    
+    if(manager.currentLevel == 1){
+        [manager startFirstLevel: scene];
+    }else{
+        
+        XYZCircle* circle = [[XYZCircle alloc] init];
+        circle.position = CGPointMake(circle.circleID * 10, 250);
+        
+        NSLog(@"adding circle %ld", (long)circle.circleID);
+        [scene addChild: circle];
+        [manager.allCircles addObject:circle];
+    }
+    
+    [manager clearAllAnimations];
+    
+    // the animations should be chosen in random
+    id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
+    [animation animate:manager.allCircles withSpeed:1];
+}
+
+// remove all animations from each of the circle in the scene
+- (void) clearAllAnimations{
+    XYZLevelManager* manager = [XYZLevelManager instance];
+    
+    for (XYZCircle *circle in manager.allCircles) {
+        [circle removeAllActions];
+    }
+}
+
+// wrapper to increase game level
+- (void) incrementLevel{
+    _currentLevel = _currentLevel + 1;
+}
+
+// initializes the first level in the scene
+- (void) startFirstLevel: (XYZMyScene*) scene
 {
     XYZLevelManager* manager = [XYZLevelManager instance];
     
     for (XYZCircle *circle in manager.allCircles) {
-        NSLog(@"adding circle %d", circle.circleID);
+        NSLog(@"adding circle %ld", (long)circle.circleID);
         [scene addChild: circle];
         
         // just for display purposes
         circle.position = CGPointMake(circle.circleID * 100, 250);
     }
-    
 }
 
 // constructor
@@ -54,7 +99,7 @@
     
     // get a new instance from super class and configure initial values
     if (self = [super init]) {
-        _currentLevel = 1;
+        _currentLevel = 0;
         _chosenCircleID = -1; // TODO : this may need change
         _allCircles = [NSMutableArray arrayWithArray: @[[[XYZCircle alloc] init], [[XYZCircle alloc] init]]];
         _allMovements = [[NSMutableArray alloc] init];

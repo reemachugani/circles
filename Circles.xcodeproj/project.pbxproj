@@ -10,6 +10,8 @@
 		68B4A78118CF546A001CDA03 /* XYZCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78018CF546A001CDA03 /* XYZCircle.m */; };
 		68B4A78418CF5639001CDA03 /* XYZLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78318CF5639001CDA03 /* XYZLevelManager.m */; };
 		68B4A78718CF64E8001CDA03 /* BlueCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 68B4A78618CF64E8001CDA03 /* BlueCircle.png */; };
+		68B4A78D18D0A69F001CDA03 /* XYZBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */; };
+		68B4A79018D0AE07001CDA03 /* XYZGameConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78F18D0AE07001CDA03 /* XYZGameConstants.m */; };
 		68D8E01B18CF4CBE00515EFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D8E01A18CF4CBE00515EFA /* Foundation.framework */; };
 		68D8E01D18CF4CBE00515EFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D8E01C18CF4CBE00515EFA /* CoreGraphics.framework */; };
 		68D8E01F18CF4CBE00515EFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D8E01E18CF4CBE00515EFA /* UIKit.framework */; };
@@ -44,6 +46,11 @@
 		68B4A78218CF5639001CDA03 /* XYZLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZLevelManager.h; sourceTree = "<group>"; };
 		68B4A78318CF5639001CDA03 /* XYZLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZLevelManager.m; sourceTree = "<group>"; };
 		68B4A78618CF64E8001CDA03 /* BlueCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueCircle.png; sourceTree = "<group>"; };
+		68B4A78918D0A577001CDA03 /* XYZAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimation.h; sourceTree = "<group>"; };
+		68B4A78B18D0A69F001CDA03 /* XYZBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZBounceAnimation.h; sourceTree = "<group>"; };
+		68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZBounceAnimation.m; sourceTree = "<group>"; };
+		68B4A78E18D0AE07001CDA03 /* XYZGameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZGameConstants.h; sourceTree = "<group>"; };
+		68B4A78F18D0AE07001CDA03 /* XYZGameConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZGameConstants.m; sourceTree = "<group>"; };
 		68D8E01718CF4CBE00515EFA /* Circles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Circles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D8E01A18CF4CBE00515EFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D8E01C18CF4CBE00515EFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,10 +103,14 @@
 		68B4A77E18CF5420001CDA03 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				68B4A78A18D0A675001CDA03 /* Animations */,
 				68B4A77F18CF546A001CDA03 /* XYZCircle.h */,
 				68B4A78018CF546A001CDA03 /* XYZCircle.m */,
 				68B4A78218CF5639001CDA03 /* XYZLevelManager.h */,
 				68B4A78318CF5639001CDA03 /* XYZLevelManager.m */,
+				68B4A78918D0A577001CDA03 /* XYZAnimation.h */,
+				68B4A78E18D0AE07001CDA03 /* XYZGameConstants.h */,
+				68B4A78F18D0AE07001CDA03 /* XYZGameConstants.m */,
 			);
 			name = Gameplay;
 			sourceTree = "<group>";
@@ -110,6 +121,15 @@
 				68B4A78618CF64E8001CDA03 /* BlueCircle.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		68B4A78A18D0A675001CDA03 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				68B4A78B18D0A69F001CDA03 /* XYZBounceAnimation.h */,
+				68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		68D8E00E18CF4CBE00515EFA = {
@@ -294,7 +314,9 @@
 				68B4A78418CF5639001CDA03 /* XYZLevelManager.m in Sources */,
 				68D8E02D18CF4CBE00515EFA /* XYZAppDelegate.m in Sources */,
 				68D8E03618CF4CBE00515EFA /* XYZMyScene.m in Sources */,
+				68B4A78D18D0A69F001CDA03 /* XYZBounceAnimation.m in Sources */,
 				68D8E02918CF4CBE00515EFA /* main.m in Sources */,
+				68B4A79018D0AE07001CDA03 /* XYZGameConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

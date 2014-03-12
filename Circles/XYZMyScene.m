@@ -8,6 +8,7 @@
 
 #import "XYZMyScene.h"
 #import "XYZLevelManager.h"
+#import "XYZGameConstants.h"
 
 @interface XYZMyScene ()
 @property XYZLevelManager* manager;
@@ -20,6 +21,11 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        
+        [XYZGameConstants initWithConstants:@{
+                    @"screenSize" : [NSValue valueWithCGSize:size]
+        }];
+        
         self.manager = [XYZLevelManager instance];
         
         [XYZLevelManager startNextLevel:self];
@@ -29,8 +35,7 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
+    [XYZLevelManager startNextLevel:self];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
