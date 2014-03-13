@@ -26,8 +26,9 @@
                     @"screenSize" : [NSValue valueWithCGSize:size]
         }];
         
-        self.manager = [XYZLevelManager instance];
+        NSLog(@"screen Size : width = %f, height = %f", size.width, size.height);
         
+        [XYZLevelManager initialize];        
         [XYZLevelManager startNextLevel:self];
         
     }

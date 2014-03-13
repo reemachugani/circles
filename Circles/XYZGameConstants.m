@@ -17,6 +17,8 @@ static NSDictionary* dictionary;
 }
 
 + (CGSize) screenSize{
+    
+    // TODO : need to handle device orientation?
     return [[dictionary objectForKey:@"screenSize"] CGSizeValue];
 }
 

@@ -12,13 +12,13 @@
 // Need to make this a singleton class, there should only be one instance of Level Manager
 @interface XYZLevelManager : NSObject
 
-@property(readonly) NSInteger currentLevel;
-@property(readonly) NSInteger chosenCircleID;
-@property(readonly) NSMutableArray* allCircles;
-@property(readonly) NSMutableArray* allMovements;
-@property(readonly) NSMutableDictionary* minApplicableLevelForMovement;
++ (NSInteger) currentLevel;
++ (NSInteger) chosenCircleID;
 
++ (void) initialize;
 + (void) startNextLevel: (XYZMyScene*) scene;
-+ (id) instance;
+
+// this prevents initialization
+- (id) init __unavailable;
 
 @end

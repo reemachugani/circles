@@ -11,103 +11,116 @@
 #import "XYZCircle.h"
 #import "XYZAnimation.h"
 #import "XYZBounceAnimation.h"
-
-
+#import "XYZGameConstants.h"
 
 @implementation XYZLevelManager
 
-// since the properties were declared as readonly in the interface, we cannot directly set the values
-// we need some way to set them from within the implementation and this provides it
-// setting _currentLevel would set currentLevel
-@synthesize currentLevel = _currentLevel;
-@synthesize chosenCircleID = _chosenCircleID;
-@synthesize allCircles  = _allCircles;
-@synthesize allMovements = _allMovements;
-@synthesize minApplicableLevelForMovement = _minApplicableLevelForMovement;
+static NSInteger currentLevel;
+static NSInteger chosenCircleID;
+static NSMutableArray* allCircles;
+static NSMutableArray* allMovements;
+static NSMutableDictionary* minApplicableLevelForMovement;
 
-// always returns the same instance (singleton)
-+ (id) instance
++ (NSInteger) currentLevel{
+    return currentLevel;
+}
+
++ (NSInteger) chosenCircleID{
+    return chosenCircleID;
+}
+
+// initialize all the static variables
++ (void) initialize
 {
-    static XYZLevelManager *instance = nil;
+    static BOOL isInitialized = false;
     
-    @synchronized(self) {
-        if (instance == nil)
-            instance = [[self alloc] init];
+    // the static variables will be initialized only once by the first thread that executes this method
+    @synchronized (self) {
+        
+        if(isInitialized)
+            return;
+        
+        isInitialized = true;
+        currentLevel = 0;
+        chosenCircleID = -1; // TODO : this may need change
+        allCircles = [NSMutableArray arrayWithArray: @[[[XYZCircle alloc] init], [[XYZCircle alloc] init]]];
+        allMovements = [[NSMutableArray alloc] init];
+        minApplicableLevelForMovement = [[NSMutableDictionary alloc] init];
     }
     
-    return instance;
 }
 
 // method to procede to a new level, it adds a new circle to the scene and applies animation when called
 + (void) startNextLevel: (XYZMyScene*) scene
 {
-    XYZLevelManager* manager = [XYZLevelManager instance];
-    [manager incrementLevel];
+    [XYZLevelManager incrementLevel];
+    NSLog(@"at level %ld", (long)currentLevel);
     
-    NSLog(@"at level %ld", (long)manager.currentLevel);
+    [XYZLevelManager prepareNextLevel:scene];
     
-    if(manager.currentLevel == 1){
-        [manager startFirstLevel: scene];
+    // choose animations applicable for currentLevel
+    
+    // choose which animation to apply to a circle
+    
+    // the animations should be chosen in random
+    [XYZLevelManager applyAnimations];
+}
+
+/** HELPER METHODS **/
+
++ (void) applyAnimations
+{
+    id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
+    [animation animate:allCircles withSpeed:1];
+}
+
++ (void) prepareNextLevel: (XYZMyScene*) scene
+{
+    
+    if(currentLevel == 1){
+        [XYZLevelManager startFirstLevel: scene];
     }else{
         
         XYZCircle* circle = [[XYZCircle alloc] init];
-        circle.position = CGPointMake(circle.circleID * 10, 250);
+        circle.position = CGPointMake(0, 0);
         
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [scene addChild: circle];
-        [manager.allCircles addObject:circle];
+        [allCircles addObject:circle];
     }
     
-    [manager clearAllAnimations];
+    [XYZLevelManager clearAllAnimations];
     
-    // the animations should be chosen in random
-    id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
-    [animation animate:manager.allCircles withSpeed:1];
 }
 
 // remove all animations from each of the circle in the scene
-- (void) clearAllAnimations{
-    XYZLevelManager* manager = [XYZLevelManager instance];
++ (void) clearAllAnimations{
     
-    for (XYZCircle *circle in manager.allCircles) {
+    for (XYZCircle *circle in allCircles) {
         [circle removeAllActions];
     }
 }
 
 // wrapper to increase game level
-- (void) incrementLevel{
-    _currentLevel = _currentLevel + 1;
++ (void) incrementLevel{
+    currentLevel = currentLevel + 1;
 }
 
 // initializes the first level in the scene
-- (void) startFirstLevel: (XYZMyScene*) scene
++ (void) startFirstLevel: (XYZMyScene*) scene
 {
-    XYZLevelManager* manager = [XYZLevelManager instance];
+    CGSize screenSize = [XYZGameConstants screenSize];
     
-    for (XYZCircle *circle in manager.allCircles) {
-        NSLog(@"adding circle %ld", (long)circle.circleID);
-        [scene addChild: circle];
+    for (XYZCircle *circle in allCircles) {
         
         // just for display purposes
-        circle.position = CGPointMake(circle.circleID * 100, 250);
+        CGFloat width = (screenSize.width/2) + (circle.circleID % 2 == 0 ? -50 : 50);
+        CGFloat height = (screenSize.height/2);
+        circle.position = CGPointMake(width, height);
+        
+        NSLog(@"adding circle %ld", (long)circle.circleID);
+        [scene addChild: circle];
     }
 }
-
-// constructor
-- (id) init
-{
-    
-    // get a new instance from super class and configure initial values
-    if (self = [super init]) {
-        _currentLevel = 0;
-        _chosenCircleID = -1; // TODO : this may need change
-        _allCircles = [NSMutableArray arrayWithArray: @[[[XYZCircle alloc] init], [[XYZCircle alloc] init]]];
-        _allMovements = [[NSMutableArray alloc] init];
-        _minApplicableLevelForMovement = [[NSMutableDictionary alloc] init];
-    }
-    
-    return self;
-}
-
 
 @end
