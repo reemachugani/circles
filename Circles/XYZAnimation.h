@@ -12,6 +12,7 @@
 
 @protocol XYZAnimation <NSObject>
 
+- (NSInteger) animationID;
 - (void) animate: (NSMutableArray *) circles withSpeed: (NSInteger) speed;
 
 @end

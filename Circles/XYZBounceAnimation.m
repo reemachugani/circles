@@ -53,4 +53,9 @@
     }
 }
 
+- (NSInteger) animationID
+{
+    return 1;
+}
+
 @end

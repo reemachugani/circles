@@ -17,8 +17,8 @@
 
 static NSInteger currentLevel;
 static NSInteger chosenCircleID;
-static NSMutableArray* allCircles;
-static NSMutableArray* allMovements;
+static NSMutableDictionary* allCircles;
+static NSMutableDictionary* allMovements;
 static NSMutableDictionary* minApplicableLevelForMovement;
 
 + (NSInteger) currentLevel{
@@ -43,8 +43,12 @@ static NSMutableDictionary* minApplicableLevelForMovement;
         isInitialized = true;
         currentLevel = 0;
         chosenCircleID = -1; // TODO : this may need change
-        allCircles = [NSMutableArray arrayWithArray: @[[[XYZCircle alloc] init], [[XYZCircle alloc] init]]];
-        allMovements = [[NSMutableArray alloc] init];
+        allCircles = [XYZLevelManager createCircles: 2];
+        
+        allMovements = [[NSMutableDictionary alloc] init];
+        id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
+        [allMovements setObject:animation forKey:[NSNumber numberWithInteger: [animation animationID]]];
+        
         minApplicableLevelForMovement = [[NSMutableDictionary alloc] init];
     }
     
@@ -62,16 +66,21 @@ static NSMutableDictionary* minApplicableLevelForMovement;
     
     // choose which animation to apply to a circle
     
-    // the animations should be chosen in random
-    [XYZLevelManager applyAnimations];
+    id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
+    NSDictionary* animationToCircles = @{[NSNumber numberWithInteger: [animation animationID]]: allCircles.allValues};
+    [XYZLevelManager applyAnimations:animationToCircles];
 }
 
 /** HELPER METHODS **/
 
-+ (void) applyAnimations
++ (void) applyAnimations: (NSDictionary *) animationToCircles
 {
-    id <XYZAnimation> animation = [[XYZBounceAnimation alloc] init];
-    [animation animate:allCircles withSpeed:1];
+    for(NSNumber *animationID in animationToCircles.allKeys){
+        id <XYZAnimation> animation  = [allMovements objectForKey: animationID];
+        NSMutableArray* circles = [animationToCircles objectForKey:animationID];
+        [animation animate:circles withSpeed:1];
+    }
+    
 }
 
 + (void) prepareNextLevel: (XYZMyScene*) scene
@@ -86,7 +95,7 @@ static NSMutableDictionary* minApplicableLevelForMovement;
         
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [scene addChild: circle];
-        [allCircles addObject:circle];
+        [allCircles setObject: circle forKey:[NSNumber numberWithInteger: circle.circleID]];
     }
     
     [XYZLevelManager clearAllAnimations];
@@ -96,7 +105,7 @@ static NSMutableDictionary* minApplicableLevelForMovement;
 // remove all animations from each of the circle in the scene
 + (void) clearAllAnimations{
     
-    for (XYZCircle *circle in allCircles) {
+    for (XYZCircle *circle in allCircles.allValues) {
         [circle removeAllActions];
     }
 }
@@ -111,7 +120,7 @@ static NSMutableDictionary* minApplicableLevelForMovement;
 {
     CGSize screenSize = [XYZGameConstants screenSize];
     
-    for (XYZCircle *circle in allCircles) {
+    for (XYZCircle *circle in allCircles.allValues) {
         
         // just for display purposes
         CGFloat width = (screenSize.width/2) + (circle.circleID % 2 == 0 ? -50 : 50);
@@ -121,6 +130,18 @@ static NSMutableDictionary* minApplicableLevelForMovement;
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [scene addChild: circle];
     }
+}
+
++ (NSMutableDictionary *) createCircles: (NSInteger) count
+{
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    
+    for(NSInteger i = 0; i < count; i++){
+        XYZCircle* circle = [[XYZCircle alloc] init];
+        [dictionary setObject:circle forKey: [NSNumber numberWithInteger: circle.circleID]];
+    }
+    
+    return dictionary;
 }
 
 @end
