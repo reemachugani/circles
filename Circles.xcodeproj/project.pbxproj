@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6805103218D46BFD00A470F1 /* XYZBounceAnimation2.m in Sources */ = {isa = PBXBuildFile; fileRef = 6805103118D46BFD00A470F1 /* XYZBounceAnimation2.m */; };
 		68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */; };
 		68B4A78118CF546A001CDA03 /* XYZCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78018CF546A001CDA03 /* XYZCircle.m */; };
 		68B4A78418CF5639001CDA03 /* XYZLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4A78318CF5639001CDA03 /* XYZLevelManager.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6805103018D46BFD00A470F1 /* XYZBounceAnimation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZBounceAnimation2.h; sourceTree = "<group>"; };
+		6805103118D46BFD00A470F1 /* XYZBounceAnimation2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZBounceAnimation2.m; sourceTree = "<group>"; };
 		68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimationContainer.h; sourceTree = "<group>"; };
 		68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
 		68B4A77F18CF546A001CDA03 /* XYZCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZCircle.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 		68B4A78A18D0A675001CDA03 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				6805103018D46BFD00A470F1 /* XYZBounceAnimation2.h */,
+				6805103118D46BFD00A470F1 /* XYZBounceAnimation2.m */,
 				68B4A78B18D0A69F001CDA03 /* XYZBounceAnimation.h */,
 				68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */,
 				68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */,
@@ -319,6 +324,7 @@
 				68B4A78418CF5639001CDA03 /* XYZLevelManager.m in Sources */,
 				68D8E02D18CF4CBE00515EFA /* XYZAppDelegate.m in Sources */,
 				68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */,
+				6805103218D46BFD00A470F1 /* XYZBounceAnimation2.m in Sources */,
 				68D8E03618CF4CBE00515EFA /* XYZMyScene.m in Sources */,
 				68B4A78D18D0A69F001CDA03 /* XYZBounceAnimation.m in Sources */,
 				68D8E02918CF4CBE00515EFA /* main.m in Sources */,
