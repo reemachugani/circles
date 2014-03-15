@@ -11,7 +11,7 @@
 
 @implementation XYZBounceAnimation
 
-- (void) animate: (NSMutableArray *) circles withSpeed: (NSInteger) speed
+- (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed
 {
 
     SKAction *moveAroundAction = [SKAction customActionWithDuration:1 actionBlock:^(SKNode *node, CGFloat elapsedTime) {
@@ -54,6 +54,11 @@
 }
 
 - (NSInteger) animationID
+{
+    return 1;
+}
+
+- (NSInteger) minApplicableLevel
 {
     return 1;
 }
