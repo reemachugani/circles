@@ -9,7 +9,8 @@
 #import "XYZAnimationContainer.h"
 #import "XYZAnimation.h"
 #import "XYZBounceAnimation.h"
-#import "XYZBounceAnimation2.h"
+#import "XYZRandomSwapAnimation.h"
+#import "XYZExpandContractAnimation.h"
 
 @implementation XYZAnimationContainer
 
@@ -43,7 +44,8 @@ static NSMutableDictionary* minApplicableLevels;
     
     // can just keep adding new animations as and when they are available
     [XYZAnimationContainer loadAnimation:[[XYZBounceAnimation alloc] init]];
-    [XYZAnimationContainer loadAnimation:[[XYZBounceAnimation2 alloc] init]];
+    [XYZAnimationContainer loadAnimation:[[XYZRandomSwapAnimation alloc] init]];
+    [XYZAnimationContainer loadAnimation:[[XYZExpandContractAnimation alloc] init]];
 }
 
 + (void) loadAnimation: (id<XYZAnimation>) animation

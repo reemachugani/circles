@@ -12,6 +12,7 @@
 
 + (void) initWithConstants: (NSDictionary *) keysAndValues;
 + (CGSize) screenSize;
++ (id) circleTexture;
 
 - (id) init __unavailable;
 

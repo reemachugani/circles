@@ -22,5 +22,10 @@ static NSDictionary* dictionary;
     return [[dictionary objectForKey:@"screenSize"] CGSizeValue];
 }
 
++ (id) circleTexture
+{
+    return [dictionary objectForKey:@"circleTexture"];
+}
+
 
 @end

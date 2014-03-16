@@ -23,7 +23,8 @@
         self.backgroundColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1.0];
         
         [XYZGameConstants initWithConstants:@{
-                    @"screenSize" : [NSValue valueWithCGSize:size]
+                    @"screenSize" : [NSValue valueWithCGSize:size],
+                    @"circleTexture" : [SKTexture textureWithImageNamed: @"BlueCircle.png"]
         }];
         
         NSLog(@"screen Size : width = %f, height = %f", size.width, size.height);
