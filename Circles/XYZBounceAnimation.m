@@ -62,7 +62,7 @@
 
 - (NSInteger) minApplicableLevel
 {
-    return 1;
+    return 10;
 }
 
 @end

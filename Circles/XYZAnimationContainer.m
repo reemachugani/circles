@@ -11,6 +11,7 @@
 #import "XYZBounceAnimation.h"
 #import "XYZRandomSwapAnimation.h"
 #import "XYZExpandContractAnimation.h"
+#import "XYZCircularAnimation.h"
 
 @implementation XYZAnimationContainer
 
@@ -46,6 +47,8 @@ static NSMutableDictionary* minApplicableLevels;
     [XYZAnimationContainer loadAnimation:[[XYZBounceAnimation alloc] init]];
     [XYZAnimationContainer loadAnimation:[[XYZRandomSwapAnimation alloc] init]];
     [XYZAnimationContainer loadAnimation:[[XYZExpandContractAnimation alloc] init]];
+    [XYZAnimationContainer loadAnimation:[[XYZCircularAnimation alloc] init]];
+    
 }
 
 + (void) loadAnimation: (id<XYZAnimation>) animation
