@@ -14,6 +14,6 @@
 
 - (NSInteger) animationID;
 - (NSInteger) minApplicableLevel;
-- (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed;
+- (void) animate: (NSArray *) circles withSpeed: (CGFloat) speed;
 
 @end

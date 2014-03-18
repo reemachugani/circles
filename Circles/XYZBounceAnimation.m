@@ -11,9 +11,11 @@
 
 @implementation XYZBounceAnimation
 
-- (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed
+- (void) animate: (NSArray *) circles withSpeed: (CGFloat) speed
 {
 
+    speed = 1/speed;
+    
     SKAction *moveAroundAction = [SKAction customActionWithDuration:1 actionBlock:^(SKNode *node, CGFloat elapsedTime) {
         
         NSMutableDictionary *oldDirections = node.userData;

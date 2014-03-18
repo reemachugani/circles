@@ -21,13 +21,13 @@
     return 1;
 }
 
-- (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed
+- (void) animate: (NSArray *) circles withSpeed: (CGFloat) speed
 {
     [self arrange: circles withSpeed: speed];
     
 }
 
-- (void) another: (NSArray *) circles withSpeed: (NSInteger) speed
+- (void) another: (NSArray *) circles withSpeed: (CGFloat) speed
 {
     NSMutableArray* initialPositions = [[NSMutableArray alloc] init];
     
@@ -58,7 +58,7 @@
     }
 }
 
-- (void) arrange: (NSArray *) circles withSpeed : (NSInteger) speed
+- (void) arrange: (NSArray *) circles withSpeed : (CGFloat) speed
 {
     CGSize screenSize = [XYZGameConstants screenSize];
     NSInteger width = [[NSNumber numberWithFloat: screenSize.width] integerValue];

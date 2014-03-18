@@ -19,7 +19,9 @@
     return 1;
 }
 
-- (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed{
+- (void) animate: (NSArray *) circles withSpeed: (CGFloat) speed{
+    
+    speed = 1/speed;
     
     NSMutableDictionary* initialPositions = [[NSMutableDictionary alloc] init];
     
