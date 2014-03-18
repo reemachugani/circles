@@ -20,7 +20,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:1.0];
+        self.backgroundColor = [SKColor colorWithRed:0.953 green:0.953 blue:0.9375 alpha:1.0];
         
         [XYZGameConstants initWithConstants:@{
                     @"screenSize" : [NSValue valueWithCGSize:size],
@@ -38,6 +38,14 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [XYZLevelManager startNextLevel:self];
+    
+//    Code for Blinking the circle when User selects one.
+//    SKAction *fadeOut = [SKAction fadeOutWithDuration: 1];
+//    SKAction *fadeIn = [SKAction fadeInWithDuration: 1];
+//    SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
+//    SKAction *pulseThreeTimes = [SKAction repeatAction:pulse count:3];
+//    SKAction *pulseForever = [SKAction repeatActionForever:pulse];
+//    [circle runAction:pulseThreeTimes];
 }
 
 -(void)update:(CFTimeInterval)currentTime {

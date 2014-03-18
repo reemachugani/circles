@@ -18,7 +18,7 @@
 }
 
 - (NSInteger) minApplicableLevel{
-    return 1;
+    return 10;
 }
 
 - (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed

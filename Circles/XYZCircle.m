@@ -17,7 +17,7 @@
     
     static NSInteger lastUsedCircleID = 1;
     
-    if(self = [super initWithImageNamed:@"WhiteCircleMed.png"]){
+    if(self = [super initWithImageNamed:@"gc.png"]){
         
         // TODO : need to verify if this is thread-safe
         @synchronized(self) {
@@ -26,7 +26,7 @@
     }
     
     //[self setCircleID: _circleID];
-    [self setCircleColor: [SKColor colorWithRed:0 green:0 blue:0.7 alpha:1]];
+    //[self setCircleColor: [SKColor colorWithRed:0 green:0 blue:0.7 alpha:1]];
     
     return self;
 }
