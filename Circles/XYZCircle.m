@@ -23,10 +23,20 @@
         @synchronized(self) {
             _circleID = lastUsedCircleID++;
         }
-    }
+        
+        self.position = CGPointMake(0, 0);
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+        self.physicsBody.dynamic = YES;
+        self.physicsBody.allowsRotation = NO;
+        self.physicsBody.friction = 0.0f;
+        self.physicsBody.linearDamping = 0.0f;
+        self.physicsBody.restitution = 1.0f;
+        //This property is computation intensive.
+        self.physicsBody.usesPreciseCollisionDetection = YES;
     
-   // [self setCircleID: _circleID];
-  //  [self setCircleColor: [SKColor colorWithRed:0 green:0 blue:0.7 alpha:1]];
+        // [self setCircleID: _circleID];
+        // [self setCircleColor: [SKColor colorWithRed:0 green:0 blue:0.7 alpha:1]];
+    }
     
     return self;
 }

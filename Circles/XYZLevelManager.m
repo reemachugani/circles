@@ -53,18 +53,6 @@ static NSMutableArray* existingAnimationsForCurLevel;
     }
 }
 
-//method to set gravity, speed and physics for scene.
-+ (void) setupPhysicsForLevel:(XYZMyScene *)scene
-{
-    scene.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:scene.frame];
-    //No gravity
-    scene.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-    scene.physicsWorld.speed = [XYZGameConstants physicsSpeed];
-    //The scene is the delegate to be notified when two physics bodies collide
-    scene.physicsWorld.contactDelegate = scene;
-    scene.physicsBody.categoryBitMask = [[XYZGameConstants getBitMaskForCategory:@"wall"] unsignedIntValue];
-}
-
 // method to procede to a new level, it adds a new circle to the scene and applies animation when called
 + (void) startNextLevel: (XYZMyScene*) scene
 {
@@ -202,15 +190,7 @@ static NSMutableArray* existingAnimationsForCurLevel;
 {
     for(NSInteger i = 0; i < count; i++){
         XYZCircle* circle = [[XYZCircle alloc] init];
-        circle.position = CGPointMake(0, 0);
-        circle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(circle.size.width, circle.size.height)];
-        circle.physicsBody.dynamic = YES;
-        circle.physicsBody.allowsRotation = NO;
-        circle.physicsBody.friction = 0.0f;
-        circle.physicsBody.linearDamping = 0.0f;
-        circle.physicsBody.restitution = 1.0f;
-        //This property is computation intensive.
-        circle.physicsBody.usesPreciseCollisionDetection = YES;
+        
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [allCircles setObject:circle forKey: [NSNumber numberWithInteger: circle.circleID]];
         [scene addChild: circle];

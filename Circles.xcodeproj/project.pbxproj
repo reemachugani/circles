@@ -12,7 +12,7 @@
 		44F1B1BD18D91AA80077704C /* oc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F1B1BC18D91AA80077704C /* oc.png */; };
 		6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */; };
 		68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */; };
-		68A2368418D588340080F166 /* XYZExpandContractAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A2368318D588340080F166 /* XYZExpandContractAnimation.m */; };
+		68A2368418D588340080F166 /* XYZContractExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A2368318D588340080F166 /* XYZContractExpandAnimation.m */; };
 		68A2368818D5C20C0080F166 /* WhiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368518D5C20C0080F166 /* WhiteCircle.png */; };
 		68A2368918D5C20C0080F166 /* WhiteCircleBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368618D5C20C0080F166 /* WhiteCircleBig.png */; };
 		68A2368A18D5C20C0080F166 /* WhiteCircleMed.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368718D5C20C0080F166 /* WhiteCircleMed.png */; };
@@ -58,8 +58,8 @@
 		6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZRandomSwapAnimation.m; sourceTree = "<group>"; };
 		68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimationContainer.h; sourceTree = "<group>"; };
 		68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
-		68A2368218D588340080F166 /* XYZExpandContractAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZExpandContractAnimation.h; sourceTree = "<group>"; };
-		68A2368318D588340080F166 /* XYZExpandContractAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZExpandContractAnimation.m; sourceTree = "<group>"; };
+		68A2368218D588340080F166 /* XYZContractExpandAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZContractExpandAnimation.h; sourceTree = "<group>"; };
+		68A2368318D588340080F166 /* XYZContractExpandAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZContractExpandAnimation.m; sourceTree = "<group>"; };
 		68A2368518D5C20C0080F166 /* WhiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircle.png; path = ../WhiteCircle.png; sourceTree = "<group>"; };
 		68A2368618D5C20C0080F166 /* WhiteCircleBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleBig.png; path = ../WhiteCircleBig.png; sourceTree = "<group>"; };
 		68A2368718D5C20C0080F166 /* WhiteCircleMed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleMed.png; path = ../WhiteCircleMed.png; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */,
 				6805103318D4999100A470F1 /* XYZRandomSwapAnimation.h */,
 				6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */,
-				68A2368218D588340080F166 /* XYZExpandContractAnimation.h */,
-				68A2368318D588340080F166 /* XYZExpandContractAnimation.m */,
+				68A2368218D588340080F166 /* XYZContractExpandAnimation.h */,
+				68A2368318D588340080F166 /* XYZContractExpandAnimation.m */,
 				44CF05CA18D7D5CC009B0D5A /* XYZCircularAnimation.h */,
 				44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */,
 			);
@@ -349,7 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A2368418D588340080F166 /* XYZExpandContractAnimation.m in Sources */,
+				68A2368418D588340080F166 /* XYZContractExpandAnimation.m in Sources */,
 				44CF05CC18D7D5CC009B0D5A /* XYZCircularAnimation.m in Sources */,
 				68D8E03318CF4CBE00515EFA /* XYZViewController.m in Sources */,
 				68B4A78118CF546A001CDA03 /* XYZCircle.m in Sources */,
