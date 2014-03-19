@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44CF05CC18D7D5CC009B0D5A /* XYZCircularAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */; };
 		44CF05CE18D7DB37009B0D5A /* gc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44CF05CD18D7DB37009B0D5A /* gc.png */; };
+		44F1B1BD18D91AA80077704C /* oc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F1B1BC18D91AA80077704C /* oc.png */; };
 		6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */; };
 		68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */; };
 		68A2368418D588340080F166 /* XYZExpandContractAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A2368318D588340080F166 /* XYZExpandContractAnimation.m */; };
@@ -52,6 +53,7 @@
 		44CF05CA18D7D5CC009B0D5A /* XYZCircularAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZCircularAnimation.h; sourceTree = "<group>"; };
 		44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZCircularAnimation.m; sourceTree = "<group>"; };
 		44CF05CD18D7DB37009B0D5A /* gc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gc.png; sourceTree = "<group>"; };
+		44F1B1BC18D91AA80077704C /* oc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oc.png; sourceTree = "<group>"; };
 		6805103318D4999100A470F1 /* XYZRandomSwapAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZRandomSwapAnimation.h; sourceTree = "<group>"; };
 		6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZRandomSwapAnimation.m; sourceTree = "<group>"; };
 		68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimationContainer.h; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		68B4A78518CF6483001CDA03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44F1B1BC18D91AA80077704C /* oc.png */,
 				44CF05CD18D7DB37009B0D5A /* gc.png */,
 				68A2368518D5C20C0080F166 /* WhiteCircle.png */,
 				68A2368618D5C20C0080F166 /* WhiteCircleBig.png */,
@@ -323,6 +326,7 @@
 				68A2368818D5C20C0080F166 /* WhiteCircle.png in Resources */,
 				68D8E02718CF4CBE00515EFA /* InfoPlist.strings in Resources */,
 				44CF05CE18D7DB37009B0D5A /* gc.png in Resources */,
+				44F1B1BD18D91AA80077704C /* oc.png in Resources */,
 				68D8E03A18CF4CBE00515EFA /* Images.xcassets in Resources */,
 				68A2368A18D5C20C0080F166 /* WhiteCircleMed.png in Resources */,
 				68D8E03018CF4CBE00515EFA /* Main.storyboard in Resources */,

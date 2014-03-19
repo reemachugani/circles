@@ -5,36 +5,48 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>7EDE859B-3C5C-47A0-A55F-EC6DA77E4E20</string>
+	<string>4E1891E8-2011-40FD-9E38-1EC85C5B2605</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Circles</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>33CDB0B7-F25A-4F29-A7B1-021D56329137</key>
-		<string>https://github.com/reemachugani/circles</string>
+		<key>DEBC20EA-96F2-450A-8FB4-54DA7F0C9723</key>
+		<string>https://www.github.com/reemachugani/circles.git</string>
+		<key>E01A5602-C3FC-4EF2-A131-E12FD27C8FA9</key>
+		<string>https://github.com/reemachugani/circles.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Circles/Circles.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>33CDB0B7-F25A-4F29-A7B1-021D56329137</key>
+		<key>DEBC20EA-96F2-450A-8FB4-54DA7F0C9723</key>
+		<string>../..</string>
+		<key>E01A5602-C3FC-4EF2-A131-E12FD27C8FA9</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/reemachugani/circles</string>
+	<string>https://github.com/reemachugani/circles.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>33CDB0B7-F25A-4F29-A7B1-021D56329137</string>
+	<string>E01A5602-C3FC-4EF2-A131-E12FD27C8FA9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>33CDB0B7-F25A-4F29-A7B1-021D56329137</string>
+			<string>DEBC20EA-96F2-450A-8FB4-54DA7F0C9723</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Circles</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E01A5602-C3FC-4EF2-A131-E12FD27C8FA9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Code</string>
 		</dict>
 	</array>
 </dict>

@@ -51,7 +51,18 @@ static NSMutableArray* existingAnimationsForCurLevel;
         animationsApplicableForLevel = [XYZAnimationContainer getMinApplicableLevels];
         existingAnimationsForCurLevel = [[NSMutableArray alloc] init];
     }
-    
+}
+
+//method to set gravity, speed and physics for scene.
++ (void) setupPhysicsForLevel:(XYZMyScene *)scene
+{
+    scene.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:scene.frame];
+    //No gravity
+    scene.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+    scene.physicsWorld.speed = [XYZGameConstants physicsSpeed];
+    //The scene is the delegate to be notified when two physics bodies collide
+    scene.physicsWorld.contactDelegate = scene;
+    scene.physicsBody.categoryBitMask = [[XYZGameConstants getBitMaskForCategory:@"wall"] unsignedIntValue];
 }
 
 // method to procede to a new level, it adds a new circle to the scene and applies animation when called
@@ -140,6 +151,10 @@ static NSMutableArray* existingAnimationsForCurLevel;
         
         NSLog(@" circle %ld has animation : %@", (long) circle.circleID, animationID);
         
+        //Setting contact and collision masks
+        circle.physicsBody.categoryBitMask = [[XYZGameConstants getBitMaskForCategory:[animationID stringValue]] unsignedIntValue];
+        circle.physicsBody.contactTestBitMask = 0;
+        circle.physicsBody.collisionBitMask = [[XYZGameConstants getBitMaskForCategory:[animationID stringValue]] unsignedIntValue]|[[XYZGameConstants getBitMaskForCategory:@"wall"] unsignedIntValue];
         [existingCircles addObject: circle];
         [animationToCircles setObject: existingCircles forKey: animationID];
     }
@@ -179,22 +194,27 @@ static NSMutableArray* existingAnimationsForCurLevel;
         CGFloat width = (screenSize.width/2) + (circle.circleID % 2 == 0 ? -50 : 50);
         CGFloat height = (screenSize.height/2);
         circle.position = CGPointMake(width, height);
-        
     }
 }
 
-// creates given number of circles and adds them to scene
+// creates given number of circles, assigns physics bodies to them and adds the circles to scene
 + (void) createCircles: (NSInteger) count andAddTo: (XYZMyScene *) scene
 {
     for(NSInteger i = 0; i < count; i++){
         XYZCircle* circle = [[XYZCircle alloc] init];
         circle.position = CGPointMake(0, 0);
-        
+        circle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(circle.size.width, circle.size.height)];
+        circle.physicsBody.dynamic = YES;
+        circle.physicsBody.allowsRotation = NO;
+        circle.physicsBody.friction = 0.0f;
+        circle.physicsBody.linearDamping = 0.0f;
+        circle.physicsBody.restitution = 1.0f;
+        //This property is computation intensive.
+        circle.physicsBody.usesPreciseCollisionDetection = YES;
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [allCircles setObject:circle forKey: [NSNumber numberWithInteger: circle.circleID]];
         [scene addChild: circle];
     }
-    
 }
 
 @end

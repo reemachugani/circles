@@ -23,15 +23,15 @@
         self.backgroundColor = [SKColor colorWithRed:0.953 green:0.953 blue:0.9375 alpha:1.0];
         
         [XYZGameConstants initWithConstants:@{
-                    @"screenSize" : [NSValue valueWithCGSize:size],
-                    @"circleTexture" : [SKTexture textureWithImageNamed: @"BlueCircle.png"]
-        }];
-        
-        NSLog(@"screen Size : width = %f, height = %f", size.width, size.height);
-        
-        [XYZLevelManager initialize];        
+                                              @"screenSize" : [NSValue valueWithCGSize:size],
+                                              @"circleTexture" : [SKTexture textureWithImageNamed: @"BlueCircle.png"],
+                                              @"physicsSpeed" : [NSNumber numberWithFloat:1.0]
+                                              }];
+        [XYZLevelManager initialize];
+        [XYZLevelManager setupPhysicsForLevel:self];
         [XYZLevelManager startNextLevel:self];
         
+        NSLog(@"screen Size : width = %f, height = %f", size.width, size.height);
     }
     return self;
 }
