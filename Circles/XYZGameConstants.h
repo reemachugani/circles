@@ -12,7 +12,9 @@
 
 + (void) initWithConstants: (NSDictionary *) keysAndValues;
 + (CGSize) screenSize;
++ (CGFloat) physicsSpeed;
 + (id) circleTexture;
++ (NSNumber *) getBitMaskForCategory: (NSString *) categoryName;
 
 - (id) init __unavailable;
 

@@ -16,6 +16,7 @@
 + (NSInteger) chosenCircleID;
 
 + (void) initialize;
++ (void) setupPhysicsForLevel: (XYZMyScene*) scene;
 + (void) startNextLevel: (XYZMyScene*) scene;
 
 // this prevents initialization

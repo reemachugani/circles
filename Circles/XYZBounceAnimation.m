@@ -50,8 +50,12 @@
         
     }];
     
-    for(XYZCircle* circle in circles){
-        [circle runAction:[SKAction repeatActionForever:moveAroundAction]];
+    //for(XYZCircle* circle in circles){
+    //    [circle runAction:[SKAction repeatActionForever:moveAroundAction]];
+    //Need to rethink this. The previous code that was here is not required anymore as the physics bodies take care of collisions, new velocities etc. So the only thing that needs to be done is to apply a force/impulse initially.
+    for(SKSpriteNode* circle in circles)
+    {
+        [circle.physicsBody applyImpulse:CGVectorMake(20, 20)];
     }
 }
 
@@ -62,7 +66,9 @@
 
 - (NSInteger) minApplicableLevel
 {
-    return 10;
+    return 3;
 }
+
+//TODO: Add method to restrict maximum speed of any circle.
 
 @end

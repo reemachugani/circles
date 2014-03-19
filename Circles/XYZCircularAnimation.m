@@ -23,15 +23,16 @@
 
 - (SKAction*) returnActionPathForRadius:(CGFloat)radius forCircle:(CGFloat)circleNum withTotalCircles:(CGFloat)totalCircles duration:(CGFloat)speed
 {
-    NSInteger startingDegValue = (360/totalCircles)*(1+ + circleNum);
-    NSInteger finaldegValue = startingDegValue+360;
-    //Duration is hard coded to 1, until the shivering bug in other animations is fixed.
+    NSInteger startingDegValue = (360/totalCircles)*(1 + circleNum);
+    NSInteger finaldegValue = startingDegValue+1080;
+    //Duration is hard coded to 3, until the shivering bug in other animations is fixed.
+    //Creating a circular path with center as center of screen.
     UIBezierPath *aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160, 240)
                                                          radius:radius
                                                      startAngle:DEGREES_TO_RADIANS(startingDegValue)
                                                        endAngle:DEGREES_TO_RADIANS(finaldegValue)
                                                       clockwise:YES];
-    SKAction *followCircle = [SKAction followPath:aPath.CGPath asOffset:NO orientToPath:YES duration:3];
+    SKAction *followCircle = [SKAction followPath:aPath.CGPath asOffset:NO orientToPath:YES duration:9];
     SKAction *animateThrice = [SKAction repeatAction:followCircle count:3];
     return animateThrice;
 }
@@ -41,9 +42,10 @@
     NSInteger temp = 1;
     //52 refers to size of circle Image. Can be standardized later.
     //TODO: Randomize direction
-    CGFloat radius = ([XYZGameConstants screenSize].width-52.0)/2;
+    CGFloat radius = ([XYZGameConstants screenSize].width-100.0)/2;
     for(XYZCircle* circle in circles)
     {
+        //Each circle gets the same path, but different locations on the circle as their initial location
         [circle runAction:[SKAction repeatActionForever:[self returnActionPathForRadius:radius forCircle:temp++ withTotalCircles:circles.count duration:speed]]];
     }
 }
