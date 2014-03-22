@@ -12,6 +12,18 @@
 
 @synthesize circleID = _circleID;
 
+- (void) blink
+{
+
+    //Code for Blinking the circle when User selects one.
+    SKAction *fadeOut = [SKAction fadeOutWithDuration: 1];
+    SKAction *fadeIn = [SKAction fadeInWithDuration: 1];
+    SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
+    SKAction *pulseThreeTimes = [SKAction repeatAction:pulse count:3];
+    [self runAction:pulseThreeTimes];
+    
+}
+
 - (id) init
 {
     

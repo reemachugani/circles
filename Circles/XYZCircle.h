@@ -10,6 +10,8 @@
 
 @interface XYZCircle : SKSpriteNode
 
-    @property(readonly) NSInteger circleID;
+@property(readonly) NSInteger circleID;
+
+- (void) blink;
 
 @end

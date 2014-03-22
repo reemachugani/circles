@@ -31,8 +31,7 @@
         [self setupPhysicsForScene];
         
         // setup LevelManager
-        [XYZLevelManager initialize];
-        [XYZLevelManager startNextLevel:self];
+        [XYZLevelManager initializeOnScene: self];
         
         NSLog(@"screen Size : width = %f, height = %f", size.width, size.height);
     }
@@ -40,15 +39,9 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [XYZLevelManager startNextLevel:self];
     
-//    Code for Blinking the circle when User selects one.
-//    SKAction *fadeOut = [SKAction fadeOutWithDuration: 1];
-//    SKAction *fadeIn = [SKAction fadeInWithDuration: 1];
-//    SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
-//    SKAction *pulseThreeTimes = [SKAction repeatAction:pulse count:3];
-//    SKAction *pulseForever = [SKAction repeatActionForever:pulse];
-//    [circle runAction:pulseThreeTimes];
+    [XYZLevelManager touchMadeAt:[touches.allObjects[0] locationInView:self.view]];
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {

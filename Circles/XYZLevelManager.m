@@ -9,7 +9,6 @@
 #include <stdlib.h>
 
 #import "XYZLevelManager.h"
-#import "XYZMyScene.h"
 #import "XYZCircle.h"
 #import "XYZAnimation.h"
 #import "XYZAnimationContainer.h"
@@ -17,6 +16,7 @@
 
 @implementation XYZLevelManager
 
+static SKScene* currentScene;
 static NSNumber* currentLevel;
 static NSNumber* chosenCircleID;
 static NSMutableDictionary* allCircles;
@@ -33,7 +33,7 @@ static NSMutableArray* existingAnimationsForCurLevel;
 }
 
 // initialize all the static variables
-+ (void) initialize
++ (void) initializeOnScene:(SKScene *)scene
 {
     static BOOL isInitialized = false;
     
@@ -44,22 +44,42 @@ static NSMutableArray* existingAnimationsForCurLevel;
             return;
         
         isInitialized = true;
+        currentScene = scene;
         currentLevel = @(0);
         chosenCircleID = @(-1); // TODO : this may need change
         allCircles = [[NSMutableDictionary alloc] init];
         allAnimations = [XYZAnimationContainer getAllAnimations];
         animationsApplicableForLevel = [XYZAnimationContainer getMinApplicableLevels];
         existingAnimationsForCurLevel = [[NSMutableArray alloc] init];
+        
+        [XYZLevelManager startNextLevel];
+    }
+}
+
++ (void) touchMadeAt:(CGPoint)location
+{
+    SKNode *touchedNode = [currentScene nodeAtPoint: location];
+    XYZCircle *chosenCircle = [allCircles objectForKey:chosenCircleID];
+    
+    NSLog(@"point x = %f, y = %f. chosenCircleAread = %@", location.x, location.y, NSStringFromCGRect([chosenCircle calculateAccumulatedFrame]));
+    
+    if([touchedNode class] == [XYZCircle class]){
+        XYZCircle* touchedCircle = (XYZCircle*) touchedNode;
+        NSLog(@"node ID : %ld, chosenCircleID : %@", touchedCircle.circleID, chosenCircleID);
+        
+        if(touchedCircle.circleID == [chosenCircleID integerValue]){
+            [XYZLevelManager startNextLevel];
+        }
     }
 }
 
 // method to procede to a new level, it adds a new circle to the scene and applies animation when called
-+ (void) startNextLevel: (XYZMyScene*) scene
++ (void) startNextLevel
 {
     [XYZLevelManager incrementLevel];
     NSLog(@"at level %@", currentLevel);
     
-    [XYZLevelManager prepareNextLevel:scene];
+    [XYZLevelManager prepareNextLevel];
     
     // choose animations applicable for currentLevel
     NSArray* animationsForCurrentLevel = [XYZLevelManager getAnimationsForCurrentLevel];
@@ -72,6 +92,9 @@ static NSMutableArray* existingAnimationsForCurLevel;
     
     // apply animations
     [XYZLevelManager applyAnimations:animationToCircles];
+    
+    // make a circle blink
+    [XYZLevelManager blinkCircle];
 }
 
 /** HELPER METHODS **/
@@ -82,14 +105,14 @@ static NSMutableArray* existingAnimationsForCurLevel;
 }
 
 // add a new circle to the scene, and clears all animations running in existing circles
-+ (void) prepareNextLevel: (XYZMyScene*) scene
++ (void) prepareNextLevel
 {
     
     // if it is the first level, display the circles in the centre of the screen
     if([currentLevel isEqual: @(1)]){
-        [XYZLevelManager startFirstLevel: scene];
+        [XYZLevelManager startFirstLevel];
     }else{
-        [XYZLevelManager createCircles: 1 andAddTo: scene];
+        [XYZLevelManager createCircles: 1];
     }
     
     [XYZLevelManager clearAllAnimations];
@@ -161,6 +184,16 @@ static NSMutableArray* existingAnimationsForCurLevel;
     
 }
 
++ (void) blinkCircle
+{
+    NSInteger numCircles = [allCircles count];
+    chosenCircleID = [NSNumber  numberWithInteger: arc4random() % numCircles + 1];  // dependant on the starting value of _circleID
+    
+    XYZCircle* chosenCircleToBlink = [allCircles objectForKey: chosenCircleID];
+    
+    [chosenCircleToBlink blink];
+}
+
 // remove all animations from each of the circle in the scene
 + (void) clearAllAnimations
 {
@@ -171,9 +204,9 @@ static NSMutableArray* existingAnimationsForCurLevel;
 
 // initializes the first level in the scene
 // creates 2 circles and sets their position to centre of the screen
-+ (void) startFirstLevel: (XYZMyScene*) scene
++ (void) startFirstLevel
 {
-    [XYZLevelManager createCircles:2 andAddTo: scene];
+    [XYZLevelManager createCircles:2];
  
     CGSize screenSize = [XYZGameConstants screenSize];
     for (XYZCircle *circle in allCircles.allValues) {
@@ -186,14 +219,14 @@ static NSMutableArray* existingAnimationsForCurLevel;
 }
 
 // creates given number of circles, assigns physics bodies to them and adds the circles to scene
-+ (void) createCircles: (NSInteger) count andAddTo: (XYZMyScene *) scene
++ (void) createCircles: (NSInteger) count
 {
     for(NSInteger i = 0; i < count; i++){
         XYZCircle* circle = [[XYZCircle alloc] init];
         
         NSLog(@"adding circle %ld", (long)circle.circleID);
         [allCircles setObject:circle forKey: [NSNumber numberWithInteger: circle.circleID]];
-        [scene addChild: circle];
+        [currentScene addChild: circle];
     }
 }
 

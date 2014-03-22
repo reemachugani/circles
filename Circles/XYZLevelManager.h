@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XYZMyScene.h"
+#import <SpriteKit/SpriteKit.h>
 
 // Need to make this a singleton class, there should only be one instance of Level Manager
 @interface XYZLevelManager : NSObject
@@ -15,8 +15,8 @@
 + (NSInteger) currentLevel;
 + (NSInteger) chosenCircleID;
 
-+ (void) initialize;
-+ (void) startNextLevel: (XYZMyScene*) scene;
++ (void) initializeOnScene: (SKScene*) scene;
++ (void) touchMadeAt: (CGPoint) location;
 
 // this prevents initialization
 - (id) init __unavailable;
