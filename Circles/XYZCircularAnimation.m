@@ -24,17 +24,20 @@
 - (SKAction*) returnActionPathForRadius:(CGFloat)radius forCircle:(CGFloat)circleNum withTotalCircles:(CGFloat)totalCircles duration:(CGFloat)speed
 {
     NSInteger startingDegValue = (360/totalCircles)*(1 + circleNum);
-    NSInteger finaldegValue = startingDegValue+1080;
+    NSInteger finaldegValue = startingDegValue+360;
     //Duration is hard coded to 3, until the shivering bug in other animations is fixed.
     //Creating a circular path with center as center of screen.
-    UIBezierPath *aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160, 240)
+    UIBezierPath *aPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(160, 284)
                                                          radius:radius
                                                      startAngle:DEGREES_TO_RADIANS(startingDegValue)
                                                        endAngle:DEGREES_TO_RADIANS(finaldegValue)
                                                       clockwise:YES];
-    SKAction *followCircle = [SKAction followPath:aPath.CGPath asOffset:NO orientToPath:YES duration:9];
-    SKAction *animateThrice = [SKAction repeatAction:followCircle count:3];
-    return animateThrice;
+    SKAction *followCircle = [SKAction followPath:aPath.CGPath asOffset:NO orientToPath:YES duration:2];
+    followCircle.timingMode = SKActionTimingEaseInEaseOut;
+    //The speed parameter is the property that determines how fast the circles move
+    followCircle.speed = 1.0;
+    //SKAction *animateThrice = [SKAction repeatAction:followCircle count:3];
+    return followCircle;
 }
 
 - (void) animate: (NSArray *) circles withSpeed: (NSInteger) speed
