@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>ED31EB18-BF4C-4A09-B30C-C54127CFEFEF</string>
+	<string>F8D13F09-6891-4EE1-B921-CD07EECF8B0D</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Circles</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>BD2B5A1A-1F4C-4451-A296-BFEB4BE32249</key>
-		<string>https://www.github.com/reemachugani/circles.git</string>
+		<key>32D6F830-0E94-488A-A390-42037EADEF62</key>
+		<string>https://github.com/reemachugani/circles</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Circles.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>BD2B5A1A-1F4C-4451-A296-BFEB4BE32249</key>
+		<key>32D6F830-0E94-488A-A390-42037EADEF62</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://www.github.com/reemachugani/circles.git</string>
+	<string>https://github.com/reemachugani/circles</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>BD2B5A1A-1F4C-4451-A296-BFEB4BE32249</string>
+	<string>32D6F830-0E94-488A-A390-42037EADEF62</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>BD2B5A1A-1F4C-4451-A296-BFEB4BE32249</string>
+			<string>32D6F830-0E94-488A-A390-42037EADEF62</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Circles</string>
 		</dict>

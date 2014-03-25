@@ -12,18 +12,6 @@
 
 @synthesize circleID = _circleID;
 
-- (void) blink
-{
-
-    //Code for Blinking the circle when User selects one.
-    SKAction *fadeOut = [SKAction fadeOutWithDuration: 1];
-    SKAction *fadeIn = [SKAction fadeInWithDuration: 1];
-    SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
-    SKAction *pulseThreeTimes = [SKAction repeatAction:pulse count:3];
-    [self runAction:pulseThreeTimes];
-    
-}
-
 - (id) init
 {
     
@@ -37,20 +25,43 @@
         }
         
         self.position = CGPointMake(0, 0);
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
-        self.physicsBody.dynamic = YES;
-        self.physicsBody.allowsRotation = NO;
-        self.physicsBody.friction = 0.0f;
-        self.physicsBody.linearDamping = 0.0f;
-        self.physicsBody.restitution = 1.0f;
-        //This property is computation intensive.
-        self.physicsBody.usesPreciseCollisionDetection = YES;
     
         // [self setCircleID: _circleID];
         // [self setCircleColor: [SKColor colorWithRed:0 green:0 blue:0.7 alpha:1]];
     }
     
     return self;
+}
+
+- (void) blink
+{
+    
+    //Code for Blinking the circle when User selects one.
+//    SKAction *fadeOut = [SKAction fadeOutWithDuration: 1];
+//    SKAction *fadeIn = [SKAction fadeInWithDuration: 1];
+//    SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
+//    SKAction *pulseThreeTimes = [SKAction repeatAction:pulse count:3];
+//    [self runAction:pulseThreeTimes];
+    
+    SKTexture* gcSmall = [SKTexture textureWithImageNamed:@"gcSmall.png"];
+    SKTexture* oc      = [SKTexture textureWithImageNamed:@"oc.png"];
+    NSArray* textures = @[gcSmall, oc];
+    
+    SKAction* three = [SKAction repeatAction:[SKAction animateWithTextures:textures timePerFrame:1] count:3];
+    [self runAction:three];
+    
+}
+
+- (void) setupPhysics
+{
+    self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width/2];
+    self.physicsBody.dynamic = YES;
+    self.physicsBody.allowsRotation = NO;
+    self.physicsBody.friction = 0.0f;
+    self.physicsBody.linearDamping = 0.0f;
+    self.physicsBody.restitution = 1.0f;
+    //This property is computation intensive.
+    self.physicsBody.usesPreciseCollisionDetection = YES;
 }
 
 - (void) setCircleID:(NSInteger)circleID

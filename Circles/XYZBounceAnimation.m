@@ -16,16 +16,21 @@
 
     speed = 1/speed;
     
+    NSString* xkeyName = @"XYZBounceAnimation.x";
+    NSString* ykeyName = @"XYZBounceAnimation.y";
+    
     SKAction *moveAroundAction = [SKAction customActionWithDuration:1 actionBlock:^(SKNode *node, CGFloat elapsedTime) {
         
         NSMutableDictionary *oldDirections = node.userData;
-        oldDirections = oldDirections == NULL ? [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                 [NSNumber numberWithInt:1], @"x",
-                                                 [NSNumber numberWithInt:1], @"y",
-                                                 nil] : oldDirections;
+        node.userData = oldDirections = oldDirections == NULL ? [[NSMutableDictionary alloc] init] : oldDirections;
         
-        CGFloat xDirection = [oldDirections[@"x"] intValue];
-        CGFloat yDirection = [oldDirections[@"y"] intValue];
+        if(oldDirections[xkeyName] == NULL){
+            oldDirections[xkeyName] = [NSNumber numberWithFloat:1];
+            oldDirections[ykeyName] = [NSNumber numberWithFloat:1];
+        }
+        
+        CGFloat xDirection = [oldDirections[xkeyName] floatValue];
+        CGFloat yDirection = [oldDirections[ykeyName] floatValue];
         
         
         if(node.position.x >= [XYZGameConstants screenSize].width)
@@ -44,18 +49,17 @@
         CGPoint position = CGPointMake(node.position.x + xSpeed, node.position.y + ySpeed);
         
         [node setPosition:position];
-        oldDirections[@"x"] = [NSNumber numberWithFloat:xDirection];
-        oldDirections[@"y"] = [NSNumber numberWithFloat:yDirection];
-        node.userData = oldDirections;
+        oldDirections[xkeyName] = [NSNumber numberWithFloat:xDirection];
+        oldDirections[ykeyName] = [NSNumber numberWithFloat:yDirection];
         
     }];
     
-    //for(XYZCircle* circle in circles){
-    //    [circle runAction:[SKAction repeatActionForever:moveAroundAction]];
+    for(XYZCircle* circle in circles){
+        [circle runAction:[SKAction repeatActionForever:moveAroundAction]];
     //Need to rethink this. The previous code that was here is not required anymore as the physics bodies take care of collisions, new velocities etc. So the only thing that needs to be done is to apply a force/impulse initially.
-    for(SKSpriteNode* circle in circles)
-    {
-        [circle.physicsBody applyImpulse:CGVectorMake(20, 20)];
+    //for(SKSpriteNode* circle in circles)
+    //{
+        //[circle.physicsBody applyImpulse:CGVectorMake(20, 20)];
     }
 }
 
@@ -66,7 +70,7 @@
 
 - (NSInteger) minApplicableLevel
 {
-    return 3;
+    return 1;
 }
 
 //TODO: Add method to restrict maximum speed of any circle.

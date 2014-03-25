@@ -12,7 +12,8 @@
 		44F1B1BD18D91AA80077704C /* oc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F1B1BC18D91AA80077704C /* oc.png */; };
 		6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */; };
 		68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */; };
-		68A2368418D588340080F166 /* XYZExpandContractAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68A2368318D588340080F166 /* XYZExpandContractAnimation.m */; };
+		689ADA0118E1D18B008E758D /* XYZContractExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */; };
+		689ADA0318E1F7D5008E758D /* gcSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 689ADA0218E1F7D5008E758D /* gcSmall.png */; };
 		68A2368818D5C20C0080F166 /* WhiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368518D5C20C0080F166 /* WhiteCircle.png */; };
 		68A2368918D5C20C0080F166 /* WhiteCircleBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368618D5C20C0080F166 /* WhiteCircleBig.png */; };
 		68A2368A18D5C20C0080F166 /* WhiteCircleMed.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368718D5C20C0080F166 /* WhiteCircleMed.png */; };
@@ -58,8 +59,9 @@
 		6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZRandomSwapAnimation.m; sourceTree = "<group>"; };
 		68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimationContainer.h; sourceTree = "<group>"; };
 		68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
-		68A2368218D588340080F166 /* XYZExpandContractAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZExpandContractAnimation.h; sourceTree = "<group>"; };
-		68A2368318D588340080F166 /* XYZExpandContractAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZExpandContractAnimation.m; sourceTree = "<group>"; };
+		689AD9FF18E1D16B008E758D /* XYZContractExpandAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZContractExpandAnimation.h; sourceTree = "<group>"; };
+		689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZContractExpandAnimation.m; sourceTree = "<group>"; };
+		689ADA0218E1F7D5008E758D /* gcSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gcSmall.png; sourceTree = "<group>"; };
 		68A2368518D5C20C0080F166 /* WhiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircle.png; path = ../WhiteCircle.png; sourceTree = "<group>"; };
 		68A2368618D5C20C0080F166 /* WhiteCircleBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleBig.png; path = ../WhiteCircleBig.png; sourceTree = "<group>"; };
 		68A2368718D5C20C0080F166 /* WhiteCircleMed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleMed.png; path = ../WhiteCircleMed.png; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		68B4A78518CF6483001CDA03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				689ADA0218E1F7D5008E758D /* gcSmall.png */,
 				44F1B1BC18D91AA80077704C /* oc.png */,
 				44CF05CD18D7DB37009B0D5A /* gc.png */,
 				68A2368518D5C20C0080F166 /* WhiteCircle.png */,
@@ -153,14 +156,14 @@
 		68B4A78A18D0A675001CDA03 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				689AD9FF18E1D16B008E758D /* XYZContractExpandAnimation.h */,
+				689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */,
 				68B4A78B18D0A69F001CDA03 /* XYZBounceAnimation.h */,
 				68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */,
 				68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */,
 				68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */,
 				6805103318D4999100A470F1 /* XYZRandomSwapAnimation.h */,
 				6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */,
-				68A2368218D588340080F166 /* XYZExpandContractAnimation.h */,
-				68A2368318D588340080F166 /* XYZExpandContractAnimation.m */,
 				44CF05CA18D7D5CC009B0D5A /* XYZCircularAnimation.h */,
 				44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */,
 			);
@@ -329,6 +332,7 @@
 				44F1B1BD18D91AA80077704C /* oc.png in Resources */,
 				68D8E03A18CF4CBE00515EFA /* Images.xcassets in Resources */,
 				68A2368A18D5C20C0080F166 /* WhiteCircleMed.png in Resources */,
+				689ADA0318E1F7D5008E758D /* gcSmall.png in Resources */,
 				68D8E03018CF4CBE00515EFA /* Main.storyboard in Resources */,
 				68B4A78718CF64E8001CDA03 /* BlueCircle.png in Resources */,
 			);
@@ -349,7 +353,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68A2368418D588340080F166 /* XYZExpandContractAnimation.m in Sources */,
 				44CF05CC18D7D5CC009B0D5A /* XYZCircularAnimation.m in Sources */,
 				68D8E03318CF4CBE00515EFA /* XYZViewController.m in Sources */,
 				68B4A78118CF546A001CDA03 /* XYZCircle.m in Sources */,
@@ -357,6 +360,7 @@
 				68D8E02D18CF4CBE00515EFA /* XYZAppDelegate.m in Sources */,
 				68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */,
 				68D8E03618CF4CBE00515EFA /* XYZMyScene.m in Sources */,
+				689ADA0118E1D18B008E758D /* XYZContractExpandAnimation.m in Sources */,
 				68B4A78D18D0A69F001CDA03 /* XYZBounceAnimation.m in Sources */,
 				68D8E02918CF4CBE00515EFA /* main.m in Sources */,
 				6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */,

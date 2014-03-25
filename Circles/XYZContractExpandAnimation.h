@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XYZAnimation.h"
 
-@interface XYZExpandContractAnimation : NSObject <XYZAnimation>
+@interface XYZContractExpandAnimation : NSObject <XYZAnimation>
 
 @end
