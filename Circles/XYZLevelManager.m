@@ -90,6 +90,8 @@ static XYZLevelManager* instance;
         
         if(touchedCircle.circleID == [chosenCircleID integerValue]){
             [XYZLevelManager startNextLevel];
+        }else{
+            [XYZLevelManager removeCircle: touchedCircle];
         }
     }
 
@@ -212,7 +214,8 @@ static XYZLevelManager* instance;
 + (void) highlightCircle
 {
     NSInteger numCircles = [allCircles count];
-    chosenCircleID = [NSNumber  numberWithInteger: arc4random() % numCircles + 1];  // dependant on the starting value of _circleID
+    NSArray* allKeys = allCircles.allKeys;
+    chosenCircleID = [allKeys objectAtIndex:arc4random() % numCircles];  // dependant on the starting value of _circleID
     
     XYZCircle* chosenCircleToBlink = [allCircles objectForKey: chosenCircleID];
     
@@ -261,6 +264,20 @@ static XYZLevelManager* instance;
     for (XYZCircle* circle in allCircles.allValues) {
         NSLog(@"circle %ld at location x = %f, y = %f", (long)circle.circleID, circle.position.x, circle.position.y);
     }
+}
+
++ (void) removeCircle: (XYZCircle*) circle
+{
+    
+    [circle removeFromParent];
+    [allCircles removeObjectForKey:[NSNumber numberWithInteger:circle.circleID]];
+    
+    NSString *burstPath = [[NSBundle mainBundle] pathForResource:@"BurstParticle" ofType:@"sks"];
+    SKEmitterNode* burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:burstPath];
+    burstNode.position = circle.position;
+    
+    [currentScene addChild:burstNode];
+
 }
 
 @end
