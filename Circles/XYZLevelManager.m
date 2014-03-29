@@ -13,6 +13,7 @@
 #import "XYZAnimation.h"
 #import "XYZAnimationContainer.h"
 #import "XYZGameConstants.h"
+#import "XYZTemplateManager.h"
 
 @implementation XYZLevelManager
 
@@ -100,6 +101,7 @@ static XYZLevelManager* instance;
 // method to procede to a new level, it adds a new circle to the scene and applies animation when called
 + (void) startNextLevel
 {
+    [XYZTemplateManager loadAllTemplateData];
     [XYZLevelManager incrementLevel];
     NSLog(@"at level %@", currentLevel);
     
