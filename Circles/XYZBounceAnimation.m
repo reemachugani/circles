@@ -68,10 +68,10 @@
     return 1;
 }
 
-- (NSInteger) minApplicableLevel
-{
-    return 1;
-}
+//- (NSInteger) minApplicableLevel
+//{
+//    return 1;
+//}
 
 //TODO: Add method to restrict maximum speed of any circle.
 

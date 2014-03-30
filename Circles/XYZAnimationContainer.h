@@ -11,6 +11,5 @@
 @interface XYZAnimationContainer : NSObject
 
 + (NSDictionary* ) getAllAnimations;
-+ (NSDictionary* ) getMinApplicableLevels;
 
 @end

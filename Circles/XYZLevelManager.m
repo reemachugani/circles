@@ -1,10 +1,3 @@
-//
-//  XYZLevelManager.m
-//  Circles
-//
-//  Created by Harish Murugasamy on 3/11/14.
-//  Copyright (c) 2014 Harish Murugasamy. All rights reserved.
-//
 
 #include <stdlib.h>
 
@@ -19,12 +12,14 @@
 
 static SKScene* currentScene;
 static NSNumber* currentLevel;
+static NSNumber* currentSet;
 static NSNumber* chosenCircleID;
 static NSMutableDictionary* allCircles;
 static NSDictionary* allAnimations;
-static NSDictionary* animationsApplicableForLevel;
-static NSMutableArray* existingAnimationsForCurLevel;
-
+static NSDictionary* allTemplates;
+static NSDictionary* templatesBySet;
+static NSArray* templatesApplicableForCurrentSet;
+static NSMutableDictionary* currentTemplateShapeCircleData;
 static XYZLevelManager* instance;
 
 - (id) initSingleton
@@ -63,12 +58,14 @@ static XYZLevelManager* instance;
         
         isInitialized = true;
         currentScene = scene;
+        currentSet = @(0);
         currentLevel = @(0);
         chosenCircleID = @(-1); // TODO : this may need change
         allCircles = [[NSMutableDictionary alloc] init];
         allAnimations = [XYZAnimationContainer getAllAnimations];
-        animationsApplicableForLevel = [XYZAnimationContainer getMinApplicableLevels];
-        existingAnimationsForCurLevel = [[NSMutableArray alloc] init];
+        
+        allTemplates = [XYZTemplateManager loadAllTemplateData];
+        templatesBySet = [XYZTemplateManager getTemplatesBySet];
         instance = [[XYZLevelManager alloc] initSingleton];
         
         [XYZLevelManager startNextLevel];
@@ -98,105 +95,91 @@ static XYZLevelManager* instance;
 
 }
 
-// method to procede to a new level, it adds a new circle to the scene and applies animation when called
+// method to procede to a new level.
 + (void) startNextLevel
 {
-    [XYZTemplateManager loadAllTemplateData];
+    
     [XYZLevelManager incrementLevel];
     NSLog(@"at level %@", currentLevel);
     
+    //Current Set is incremented every 5 levels (At level 1,6,11...)
+    if([currentLevel integerValue]%5 == 1)
+    {
+        currentSet = @([currentSet integerValue]+1);
+        [XYZLevelManager prepareNextSet];
+    }
+    
     [XYZLevelManager prepareNextLevel];
     
-    // choose animations applicable for currentLevel
-    NSArray* animationsForCurrentLevel = [XYZLevelManager getAnimationsForCurrentLevel];
+    NSInteger numberOfEligibleTemplates = [templatesApplicableForCurrentSet count];
+    NSLog(@"SET: %d, LEVEL: %d, ELIGIBLE TEMPLATES: %ld",[currentSet intValue],[currentLevel intValue],numberOfEligibleTemplates);
     
-    // choose a random subset of animations to apply to allCircles
-    NSArray* chosenAnimations = [XYZLevelManager getRandomAnimationsFrom: animationsForCurrentLevel];
+    // Choose a random template to use for the current Level
+    // Load the template, move circles to new positions & return shape, circle & animation info
+    currentTemplateShapeCircleData = [XYZTemplateManager loadTemplate:templatesApplicableForCurrentSet[arc4random()%numberOfEligibleTemplates] withCircles:allCircles.allValues];
     
-    // choose which animation to apply to a circle
-    NSDictionary* animationToCircles = [XYZLevelManager distributeCircles: allCircles.allValues toAnimations: chosenAnimations];
+    // Choose animations to apply to shapes in the template
+    NSDictionary* animationToCircles = [XYZLevelManager distributeCircles:allCircles.allValues toAnimations:allAnimations usingTemplate:currentTemplateShapeCircleData];
     
-    // apply animations
+    // Apply animations
     [XYZLevelManager applyAnimations:animationToCircles];
     
     // make a circle blink
     [XYZLevelManager highlightCircle];
     
-    
-    [instance performSelector:@selector(clearAllAnimations) withObject:nil afterDelay:6];
+    [instance performSelector:@selector(clearAllAnimations) withObject:nil afterDelay:11];
 }
 
 /** HELPER METHODS **/
 
 // wrapper to increase game level
-+ (void) incrementLevel{
-    currentLevel = @([currentLevel integerValue] + 1);
++ (void) incrementLevel
+{
+    if([currentLevel intValue] == 0)
+    {
+        [XYZLevelManager createCircles:1];
+    }
+    currentLevel = @(([currentLevel integerValue])+1);
+}
+
++ (void) prepareNextLevel
+{
+    [XYZLevelManager clearAllAnimations];
 }
 
 // add a new circle to the scene, and clears all animations running in existing circles
-+ (void) prepareNextLevel
++ (void) prepareNextSet
 {
-    
-    // if it is the first level, display the circles in the centre of the screen
-    if([currentLevel isEqual: @(1)]){
-        [XYZLevelManager startFirstLevel];
-    }else{
-        [XYZLevelManager createCircles: 1];
-    }
-    
-    [XYZLevelManager clearAllAnimations];
-    
+    //Get templates eligible for the this set (5 levels)
+    templatesApplicableForCurrentSet = [XYZTemplateManager getTemplatesForCurrentSet:currentSet];
+    //Add a circle every set
+    [XYZLevelManager createCircles: 1];
 }
 
-+ (NSMutableArray* ) getAnimationsForCurrentLevel
++ (NSMutableDictionary* ) distributeCircles: (NSArray *) circles toAnimations: (NSDictionary *) allAnimations usingTemplate: (NSDictionary*) currentTemplateShapeCircleData
 {
-    // add any new animations that are applicable for currentLevel
-    [existingAnimationsForCurLevel addObjectsFromArray: [animationsApplicableForLevel objectForKey: currentLevel]];
-    
-    return existingAnimationsForCurLevel;
-}
-
-// get a random subset of animations from all those animations applicable for currentLevel
-+ (NSMutableArray* ) getRandomAnimationsFrom: (NSArray *) animationsForCurrentLevel
-{
-    NSInteger numAnimationsRequired = 5;
-    NSInteger numAnimationsForCurrentLevel = [animationsForCurrentLevel count];
-    
-    numAnimationsRequired = numAnimationsForCurrentLevel < numAnimationsRequired ? numAnimationsForCurrentLevel : numAnimationsRequired;
-    
-    NSMutableArray* randomAnimations = [[NSMutableArray alloc] initWithCapacity: numAnimationsRequired];
-    
-    for(NSInteger i = 0; i < numAnimationsRequired; i++){
-        [randomAnimations addObject: animationsForCurrentLevel[arc4random() % numAnimationsForCurrentLevel]];
-    }
-    
-    return randomAnimations;
-    
-}
-
-+ (NSMutableDictionary* ) distributeCircles: (NSArray *) circles toAnimations: (NSArray *) animations
-{
-    NSInteger numAnimations = [animations count] ;
+    NSInteger numAnimations = [allAnimations count] ;
     NSMutableDictionary* animationToCircles = [[NSMutableDictionary alloc] initWithCapacity: numAnimations];
     
-    // TODO : equal distribution or random?
-    for( XYZCircle* circle in circles){
-        
-        NSNumber *animationID = [NSNumber numberWithInteger: [animations[arc4random() % numAnimations] animationID]];
-        NSMutableArray* existingCircles = [animationToCircles objectForKey: animationID];
-        
-        if(existingCircles == NULL){
-            existingCircles = [[NSMutableArray alloc] init];
+    //NSMutableDictionary* shapesInTemplate = [NSDictionary dictionaryWithDictionary:currentTemplatNSe[@"shapes"]];
+    
+    for(id shape in currentTemplateShapeCircleData)
+    {
+        NSDictionary* currentShape = [currentTemplateShapeCircleData objectForKey:shape];
+        NSArray* eligibileAnimations = [NSArray arrayWithArray: [currentShape objectForKey:@"animations"]];
+        NSNumber *animationID = eligibileAnimations[arc4random() % [eligibileAnimations count]];
+        NSArray* circlesInShape = [NSArray arrayWithArray:currentShape[@"nodes"]];
+
+        for(XYZCircle* circle in circlesInShape)
+        {
+            NSMutableArray* existingCircles = [animationToCircles objectForKey: animationID];
+            if(existingCircles == NULL){
+                existingCircles = [[NSMutableArray alloc] init];
+            }
+            NSLog(@" circle %ld has animation : %@", (long) circle.circleID, animationID);
+            [existingCircles addObject: circle];
+            [animationToCircles setObject: existingCircles forKey: animationID];
         }
-        
-        NSLog(@" circle %ld has animation : %@", (long) circle.circleID, animationID);
-        
-        //Setting contact and collision masks
-        circle.physicsBody.categoryBitMask = [[XYZGameConstants getBitMaskForCategory:[animationID stringValue]] unsignedIntValue];
-        circle.physicsBody.contactTestBitMask = 0;
-        circle.physicsBody.collisionBitMask = [[XYZGameConstants getBitMaskForCategory:[animationID stringValue]] unsignedIntValue]|[[XYZGameConstants getBitMaskForCategory:@"wall"] unsignedIntValue];
-        [existingCircles addObject: circle];
-        [animationToCircles setObject: existingCircles forKey: animationID];
     }
     
     return animationToCircles;
@@ -233,23 +216,7 @@ static XYZLevelManager* instance;
     }
 }
 
-// initializes the first level in the scene
-// creates 2 circles and sets their position to centre of the screen
-+ (void) startFirstLevel
-{
-    [XYZLevelManager createCircles:2];
- 
-    CGSize screenSize = [XYZGameConstants screenSize];
-    for (XYZCircle *circle in allCircles.allValues) {
-        
-        // just for display purposes
-        CGFloat width = (screenSize.width/2) + (circle.circleID % 2 == 0 ? -50 : 50);
-        CGFloat height = (screenSize.height/2);
-        circle.position = CGPointMake(width, height);
-    }
-}
-
-// creates given number of circles, assigns physics bodies to them and adds the circles to scene
+// creates given number of circles
 + (void) createCircles: (NSInteger) count
 {
     for(NSInteger i = 0; i < count; i++){
@@ -281,5 +248,6 @@ static XYZLevelManager* instance;
     [currentScene addChild:burstNode];
 
 }
+
 
 @end

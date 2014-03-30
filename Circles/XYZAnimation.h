@@ -13,7 +13,7 @@
 @protocol XYZAnimation <NSObject>
 
 - (NSInteger) animationID;
-- (NSInteger) minApplicableLevel;
+//- (NSInteger) minApplicableLevel;
 - (void) animate: (NSArray *) circles withSpeed: (CGFloat) speed;
 
 @end

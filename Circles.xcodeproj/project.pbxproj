@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		444B37EE18E6202400D34FF5 /* XYZShapeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B37ED18E6202400D34FF5 /* XYZShapeFactory.m */; };
-		444B37F118E6214B00D34FF5 /* XYZTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B37F018E6214B00D34FF5 /* XYZTemplateManager.m */; };
-		444B37F518E62EE000D34FF5 /* Templates.json in Resources */ = {isa = PBXBuildFile; fileRef = 444B37F418E62EE000D34FF5 /* Templates.json */; };
+		444B37F518E62EE000D34FF5 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 444B37F418E62EE000D34FF5 /* Data.json */; };
+		44545B5818E75160002CA14C /* XYZContractExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44545B5718E75160002CA14C /* XYZContractExpandAnimation.m */; };
+		44545B5918E751D2002CA14C /* XYZTemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 444B37F018E6214B00D34FF5 /* XYZTemplateManager.m */; };
 		44CF05CC18D7D5CC009B0D5A /* XYZCircularAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */; };
 		44CF05CE18D7DB37009B0D5A /* gc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44CF05CD18D7DB37009B0D5A /* gc.png */; };
 		44F1B1BD18D91AA80077704C /* oc.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F1B1BC18D91AA80077704C /* oc.png */; };
 		6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */; };
 		68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */; };
-		689ADA0118E1D18B008E758D /* XYZContractExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */; };
 		689ADA0318E1F7D5008E758D /* gcSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 689ADA0218E1F7D5008E758D /* gcSmall.png */; };
 		68A2368818D5C20C0080F166 /* WhiteCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368518D5C20C0080F166 /* WhiteCircle.png */; };
 		68A2368918D5C20C0080F166 /* WhiteCircleBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 68A2368618D5C20C0080F166 /* WhiteCircleBig.png */; };
@@ -60,7 +60,8 @@
 		444B37ED18E6202400D34FF5 /* XYZShapeFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZShapeFactory.m; sourceTree = "<group>"; };
 		444B37EF18E6214B00D34FF5 /* XYZTemplateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZTemplateManager.h; sourceTree = "<group>"; };
 		444B37F018E6214B00D34FF5 /* XYZTemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZTemplateManager.m; sourceTree = "<group>"; };
-		444B37F418E62EE000D34FF5 /* Templates.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; indentWidth = 4; lineEnding = 0; path = Templates.json; sourceTree = "<group>"; tabWidth = 1; usesTabs = 1; };
+		444B37F418E62EE000D34FF5 /* Data.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; indentWidth = 4; lineEnding = 0; path = Data.json; sourceTree = "<group>"; tabWidth = 1; usesTabs = 1; };
+		44545B5718E75160002CA14C /* XYZContractExpandAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZContractExpandAnimation.m; sourceTree = "<group>"; };
 		44CF05CA18D7D5CC009B0D5A /* XYZCircularAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZCircularAnimation.h; sourceTree = "<group>"; };
 		44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZCircularAnimation.m; sourceTree = "<group>"; };
 		44CF05CD18D7DB37009B0D5A /* gc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gc.png; sourceTree = "<group>"; };
@@ -70,7 +71,7 @@
 		68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZAnimationContainer.h; sourceTree = "<group>"; };
 		68925D3A18D4301600BEDB40 /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
 		689AD9FF18E1D16B008E758D /* XYZContractExpandAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZContractExpandAnimation.h; sourceTree = "<group>"; };
-		689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZContractExpandAnimation.m; sourceTree = "<group>"; };
+		689ADA0018E1D18B008E758D /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
 		689ADA0218E1F7D5008E758D /* gcSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gcSmall.png; sourceTree = "<group>"; };
 		68A2368518D5C20C0080F166 /* WhiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircle.png; path = ../WhiteCircle.png; sourceTree = "<group>"; };
 		68A2368618D5C20C0080F166 /* WhiteCircleBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleBig.png; path = ../WhiteCircleBig.png; sourceTree = "<group>"; };
@@ -136,17 +137,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44545B5518E74654002CA14C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				444B37EF18E6214B00D34FF5 /* XYZTemplateManager.h */,
+				444B37F018E6214B00D34FF5 /* XYZTemplateManager.m */,
+				444B37EC18E6202400D34FF5 /* XYZShapeFactory.h */,
+				444B37ED18E6202400D34FF5 /* XYZShapeFactory.m */,
+				68B4A78218CF5639001CDA03 /* XYZLevelManager.h */,
+				68B4A78318CF5639001CDA03 /* XYZLevelManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		44545B5618E74682002CA14C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				68B4A78918D0A577001CDA03 /* XYZAnimation.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		68B4A77E18CF5420001CDA03 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				44545B5618E74682002CA14C /* Protocols */,
+				44545B5518E74654002CA14C /* Managers */,
 				68B4A78A18D0A675001CDA03 /* Animations */,
-				444B37EC18E6202400D34FF5 /* XYZShapeFactory.h */,
-				444B37ED18E6202400D34FF5 /* XYZShapeFactory.m */,
 				68B4A77F18CF546A001CDA03 /* XYZCircle.h */,
 				68B4A78018CF546A001CDA03 /* XYZCircle.m */,
-				68B4A78218CF5639001CDA03 /* XYZLevelManager.h */,
-				68B4A78318CF5639001CDA03 /* XYZLevelManager.m */,
-				68B4A78918D0A577001CDA03 /* XYZAnimation.h */,
 				68B4A78E18D0AE07001CDA03 /* XYZGameConstants.h */,
 				68B4A78F18D0AE07001CDA03 /* XYZGameConstants.m */,
 			);
@@ -172,8 +191,9 @@
 		68B4A78A18D0A675001CDA03 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				44545B5718E75160002CA14C /* XYZContractExpandAnimation.m */,
 				689AD9FF18E1D16B008E758D /* XYZContractExpandAnimation.h */,
-				689ADA0018E1D18B008E758D /* XYZContractExpandAnimation.m */,
+				689ADA0018E1D18B008E758D /* XYZAnimationContainer.m */,
 				68B4A78B18D0A69F001CDA03 /* XYZBounceAnimation.h */,
 				68B4A78C18D0A69F001CDA03 /* XYZBounceAnimation.m */,
 				68925D3918D4301600BEDB40 /* XYZAnimationContainer.h */,
@@ -182,8 +202,6 @@
 				6805103418D4999100A470F1 /* XYZRandomSwapAnimation.m */,
 				44CF05CA18D7D5CC009B0D5A /* XYZCircularAnimation.h */,
 				44CF05CB18D7D5CC009B0D5A /* XYZCircularAnimation.m */,
-				444B37EF18E6214B00D34FF5 /* XYZTemplateManager.h */,
-				444B37F018E6214B00D34FF5 /* XYZTemplateManager.m */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -240,7 +258,7 @@
 		68D8E02318CF4CBE00515EFA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				444B37F418E62EE000D34FF5 /* Templates.json */,
+				444B37F418E62EE000D34FF5 /* Data.json */,
 				68D8E02418CF4CBE00515EFA /* Circles-Info.plist */,
 				68D8E02518CF4CBE00515EFA /* InfoPlist.strings */,
 				68D8E02818CF4CBE00515EFA /* main.m */,
@@ -312,7 +330,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = XYZ;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Harish Murugasamy";
 				TargetAttributes = {
 					68D8E03E18CF4CBE00515EFA = {
@@ -352,7 +370,7 @@
 				68D8E03A18CF4CBE00515EFA /* Images.xcassets in Resources */,
 				68C2D6E918E3318500E4BA46 /* particle.png in Resources */,
 				68C2D6E418E3256000E4BA46 /* BurstParticle.sks in Resources */,
-				444B37F518E62EE000D34FF5 /* Templates.json in Resources */,
+				444B37F518E62EE000D34FF5 /* Data.json in Resources */,
 				68A2368A18D5C20C0080F166 /* WhiteCircleMed.png in Resources */,
 				689ADA0318E1F7D5008E758D /* gcSmall.png in Resources */,
 				68D8E03018CF4CBE00515EFA /* Main.storyboard in Resources */,
@@ -377,16 +395,16 @@
 			files = (
 				44CF05CC18D7D5CC009B0D5A /* XYZCircularAnimation.m in Sources */,
 				444B37EE18E6202400D34FF5 /* XYZShapeFactory.m in Sources */,
+				44545B5818E75160002CA14C /* XYZContractExpandAnimation.m in Sources */,
 				68D8E03318CF4CBE00515EFA /* XYZViewController.m in Sources */,
+				44545B5918E751D2002CA14C /* XYZTemplateManager.m in Sources */,
 				68B4A78118CF546A001CDA03 /* XYZCircle.m in Sources */,
 				68B4A78418CF5639001CDA03 /* XYZLevelManager.m in Sources */,
 				68D8E02D18CF4CBE00515EFA /* XYZAppDelegate.m in Sources */,
 				68925D3B18D4301600BEDB40 /* XYZAnimationContainer.m in Sources */,
 				68D8E03618CF4CBE00515EFA /* XYZMyScene.m in Sources */,
-				689ADA0118E1D18B008E758D /* XYZContractExpandAnimation.m in Sources */,
 				68B4A78D18D0A69F001CDA03 /* XYZBounceAnimation.m in Sources */,
 				68D8E02918CF4CBE00515EFA /* main.m in Sources */,
-				444B37F118E6214B00D34FF5 /* XYZTemplateManager.m in Sources */,
 				6805103518D4999100A470F1 /* XYZRandomSwapAnimation.m in Sources */,
 				68B4A79018D0AE07001CDA03 /* XYZGameConstants.m in Sources */,
 			);
@@ -442,7 +460,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -481,7 +498,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -541,7 +557,6 @@
 		68D8E05418CF4CBE00515EFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Circles.app/Circles";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -564,7 +579,6 @@
 		68D8E05518CF4CBE00515EFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Circles.app/Circles";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

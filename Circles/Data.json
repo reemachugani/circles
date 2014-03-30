@@ -1,0 +1,54 @@
+{
+				"_comments":
+				{
+								"Template Format": ""
+				},
+				"TemplateID":
+				{
+								"1":
+								{
+												"sets":[1,2],
+												"shapes":
+												{
+																"HorizontalLine":
+																{
+																				"minNodes":2,
+																				"maxNodes":7,
+																				"size":0.80,
+																				"center":[50,50],
+																				"animations":[1,2]
+																}
+												}
+								},
+								"2":
+								{
+												"sets":[2],
+												"shapes":
+												{
+																"HorizontalLine":
+																{
+																				"minNodes":2,
+																				"maxNodes":7,
+																				"size":0.80,
+																				"center":[50,50],
+																				"animations":[1,2,4]
+																},
+																"VerticalLine":
+																{
+																				"minNodes":2,
+																				"maxNodes":7,
+																				"size":0.50,
+																				"center":[50,50],
+																				"animations":[1,2,4]
+																}
+												}
+								}
+				},
+				"AnimationID":
+				{
+								"1": "Bounce",
+								"2": "Contract and Expand",
+								"3": "Random Swap",
+								"4": "Circular"
+				}
+}

@@ -16,7 +16,6 @@
 @implementation XYZAnimationContainer
 
 static NSMutableDictionary* allAnimations;
-static NSMutableDictionary* minApplicableLevels;
 
 + (NSDictionary *) getAllAnimations
 {
@@ -28,20 +27,9 @@ static NSMutableDictionary* minApplicableLevels;
     return allAnimations;
 }
 
-+ (NSDictionary *) getMinApplicableLevels
-{
-    if(allAnimations == NULL)
-        [XYZAnimationContainer loadAllAnimations];
-    
-     NSLog(@"minApplicableLevels : %@", minApplicableLevels);
-    
-    return minApplicableLevels;
-}
-
 + (void) loadAllAnimations
 {
     allAnimations = [[NSMutableDictionary alloc] init];
-    minApplicableLevels = [[NSMutableDictionary alloc] init];
     
     // can just keep adding new animations as and when they are available
     [XYZAnimationContainer loadAnimation:[[XYZBounceAnimation alloc] init]];
@@ -54,17 +42,6 @@ static NSMutableDictionary* minApplicableLevels;
 + (void) loadAnimation: (id<XYZAnimation>) animation
 {
     [allAnimations setObject: animation forKey: [NSNumber numberWithInteger: [animation animationID]]];
-    
-    // add current animation to minApplicableLevels
-    NSNumber* minAppLevel = [NSNumber numberWithInteger: [animation minApplicableLevel]];
-    NSMutableArray* existingAnimationsForLevel = [minApplicableLevels objectForKey: minAppLevel];
-    
-    if(existingAnimationsForLevel == NULL)
-        existingAnimationsForLevel = [[NSMutableArray alloc] init];
-    
-    [existingAnimationsForLevel addObject: animation];
-    
-    [minApplicableLevels setObject: existingAnimationsForLevel forKey: minAppLevel];
 }
 
 @end

@@ -16,10 +16,10 @@
     return 4;
 }
 
-- (NSInteger) minApplicableLevel
-{
-    return 1;
-}
+//- (NSInteger) minApplicableLevel
+//{
+//    return 1;
+//}
 
 - (SKAction*) returnActionPathForRadius:(CGFloat)radius forCircle:(CGFloat)circleNum withTotalCircles:(CGFloat)totalCircles duration:(CGFloat)speed
 {
