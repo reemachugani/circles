@@ -7,6 +7,7 @@
 #import "XYZAnimationContainer.h"
 #import "XYZGameConstants.h"
 #import "XYZTemplateManager.h"
+#import "XYZShapeFactory.h"
 
 @implementation XYZLevelManager
 
@@ -35,6 +36,11 @@ static XYZLevelManager* instance;
 {
     [XYZLevelManager clearAllAnimations];
     [XYZLevelManager printNodeLocations];
+}
+
+- (void) notify
+{
+    [XYZLevelManager startCircleAnimations];
 }
 
 + (NSInteger) currentLevel{
@@ -118,16 +124,8 @@ static XYZLevelManager* instance;
     // Load the template, move circles to new positions & return shape, circle & animation info
     currentTemplateShapeCircleData = [XYZTemplateManager loadTemplate:templatesApplicableForCurrentSet[arc4random()%numberOfEligibleTemplates] withCircles:allCircles.allValues];
     
-    // Choose animations to apply to shapes in the template
-    NSDictionary* animationToCircles = [XYZLevelManager distributeCircles:allCircles.allValues toAnimations:allAnimations usingTemplate:currentTemplateShapeCircleData];
-    
-    // Apply animations
-    [XYZLevelManager applyAnimations:animationToCircles];
-    
-    // make a circle blink
-    [XYZLevelManager highlightCircle];
-    
-    [instance performSelector:@selector(clearAllAnimations) withObject:nil afterDelay:11];
+    // register as an observer to be notified when ShapeFactory finishes moving the circles to their initial positions
+    [XYZShapeFactory addObserver:instance];
 }
 
 /** HELPER METHODS **/
@@ -247,6 +245,24 @@ static XYZLevelManager* instance;
     
     [currentScene addChild:burstNode];
 
+}
+
+// distribute animations and apply those animations to the circles
+//TODO : maybe rename to a more appropriate function name ?
++ (void) startCircleAnimations
+{
+    NSLog(@"running startAction");
+    
+    // Choose animations to apply to shapes in the template
+    NSDictionary* animationToCircles = [XYZLevelManager distributeCircles:allCircles.allValues toAnimations:allAnimations usingTemplate:currentTemplateShapeCircleData];
+    
+    // Apply animations
+    [XYZLevelManager applyAnimations:animationToCircles];
+    
+    // hightlight a circle to the user
+    [XYZLevelManager highlightCircle];
+    
+    [instance performSelector:@selector(clearAllAnimations) withObject:nil afterDelay:11];
 }
 
 

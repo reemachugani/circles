@@ -73,6 +73,7 @@
 		689AD9FF18E1D16B008E758D /* XYZContractExpandAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZContractExpandAnimation.h; sourceTree = "<group>"; };
 		689ADA0018E1D18B008E758D /* XYZAnimationContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZAnimationContainer.m; sourceTree = "<group>"; };
 		689ADA0218E1F7D5008E758D /* gcSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gcSmall.png; sourceTree = "<group>"; };
+		68A1F61318EB090200C5C9F0 /* XYZObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZObserver.h; sourceTree = "<group>"; };
 		68A2368518D5C20C0080F166 /* WhiteCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircle.png; path = ../WhiteCircle.png; sourceTree = "<group>"; };
 		68A2368618D5C20C0080F166 /* WhiteCircleBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleBig.png; path = ../WhiteCircleBig.png; sourceTree = "<group>"; };
 		68A2368718D5C20C0080F166 /* WhiteCircleMed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WhiteCircleMed.png; path = ../WhiteCircleMed.png; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				68B4A78918D0A577001CDA03 /* XYZAnimation.h */,
+				68A1F61318EB090200C5C9F0 /* XYZObserver.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
