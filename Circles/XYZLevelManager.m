@@ -125,7 +125,7 @@ static XYZLevelManager* instance;
     currentTemplateShapeCircleData = [XYZTemplateManager loadTemplate:templatesApplicableForCurrentSet[arc4random()%numberOfEligibleTemplates] withCircles:allCircles.allValues];
     
     // register as an observer to be notified when ShapeFactory finishes moving the circles to their initial positions
-    [XYZShapeFactory addObserver:instance];
+    [XYZTemplateManager addObserver:instance];
 }
 
 /** HELPER METHODS **/

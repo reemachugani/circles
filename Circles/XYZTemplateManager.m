@@ -1,12 +1,14 @@
 
 #import "XYZTemplateManager.h"
 #import "XYZShapeFactory.h"
+#import "XYZCircle.h"
 
 @implementation XYZTemplateManager
 
 //Mapping of Set ID to an array of Template IDs
 static NSMutableDictionary* templatesBySet;
 static NSDictionary* allTemplates;
+static NSMutableSet* observers;
 
 //Initial setup of reading from local JSON file
 + (NSDictionary*) loadAllTemplateData
@@ -89,6 +91,7 @@ static NSDictionary* allTemplates;
         NSLog(@"...");
     }
     
+    NSMutableDictionary* positionsOnScreen = [[NSMutableDictionary alloc] init];
     // TODO: Handle extra circles
     
     // Call methods of ShapeFactory to move circles to their positions
@@ -96,12 +99,72 @@ static NSDictionary* allTemplates;
     for(NSString* shapeName in shapeInfo.allKeys)
     {
         NSString* methodToCall = [NSString stringWithFormat:@"%@%@:",@"generate",[shapeName mutableCopy]];
-        [XYZShapeFactory performSelector:NSSelectorFromString(methodToCall) withObject: [shapeInfo objectForKey:shapeName]];
+        NSMutableDictionary* positionsForThisShape = [XYZShapeFactory performSelector:NSSelectorFromString(methodToCall) withObject: [shapeInfo objectForKey:shapeName]];
+        
+        [positionsOnScreen addEntriesFromDictionary: positionsForThisShape];
     }
+    
+    [XYZTemplateManager moveCircles: circles toPositions: positionsOnScreen];
     
     // Return shape and circle Info
     
     return [[NSDictionary dictionaryWithDictionary:shapeInfo] mutableCopy];
+}
+
++ (void) moveCircles: (NSArray*) circles toPositions: (NSDictionary*) positionsOnScreen
+{
+    for(XYZCircle* circle in circles){
+        
+        NSString* newPositionStr = positionsOnScreen[[NSNumber numberWithInteger: circle.circleID]];
+        CGPoint newPosition = CGPointFromString(newPositionStr);
+        
+        [circle runAction: [SKAction moveTo: newPosition duration: 1] completion:^{
+            
+            // run this block on completion of the 'moveTo' action by each circle
+            
+            // this block waits for all the circles to move to their positions
+            // once all circles have moved to their positions notify all the registered observers
+            @synchronized (self){
+                static NSInteger count = 0;
+                
+                count++;
+                
+                // notify all observers if all circles have moved to their positions
+                if(count == circles.count){
+                    count = 0;
+                    NSLog(@"notifying observers. all circles have reached their positions");
+                    [XYZTemplateManager notifyAll];
+                }
+            }
+            
+        }];
+    }
+}
+
+
++ (void) notifyAll
+{
+    for(id<XYZObserver> observer in observers){
+        [observer notify];
+    }
+}
+
++ (void) addObserver: (id <XYZObserver>) newObserver
+{
+    if(observers == NULL){
+        observers = [[NSMutableSet alloc] init];
+    }
+    
+    [observers addObject: newObserver];
+}
+
++ (void) removeObserver: (id <XYZObserver>) exisitingObserver
+{
+    if(observers == NULL){
+        return;
+    }
+    
+    [observers removeObject: exisitingObserver];
 }
 
 @end
