@@ -135,7 +135,7 @@ static XYZLevelManager* instance;
 {
     if([currentLevel intValue] == 0)
     {
-        [XYZLevelManager createCircles:1];
+        [XYZLevelManager createCircles:3];
     }
     currentLevel = @(([currentLevel integerValue])+1);
 }
@@ -236,14 +236,14 @@ static XYZLevelManager* instance;
 + (void) removeCircle: (XYZCircle*) circle
 {
     
-    [circle removeFromParent];
-    [allCircles removeObjectForKey:[NSNumber numberWithInteger:circle.circleID]];
-    
-    NSString *burstPath = [[NSBundle mainBundle] pathForResource:@"BurstParticle" ofType:@"sks"];
-    SKEmitterNode* burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:burstPath];
-    burstNode.position = circle.position;
-    
-    [currentScene addChild:burstNode];
+//    [circle removeFromParent];
+//    [allCircles removeObjectForKey:[NSNumber numberWithInteger:circle.circleID]];
+//    
+//    NSString *burstPath = [[NSBundle mainBundle] pathForResource:@"BurstParticle" ofType:@"sks"];
+//    SKEmitterNode* burstNode = [NSKeyedUnarchiver unarchiveObjectWithFile:burstPath];
+//    burstNode.position = circle.position;
+//    
+//    [currentScene addChild:burstNode];
 
 }
 

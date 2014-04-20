@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XYZAnimation.h"
 
-@interface XYZRandomSwapAnimation : NSObject <XYZAnimation>
+@interface XYZSwapAnimation : NSObject <XYZAnimation>
 
 @end

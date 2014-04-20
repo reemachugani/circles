@@ -9,7 +9,7 @@
 #import "XYZAnimationContainer.h"
 #import "XYZAnimation.h"
 #import "XYZBounceAnimation.h"
-#import "XYZRandomSwapAnimation.h"
+#import "XYZSwapAnimation.h"
 #import "XYZContractExpandAnimation.h"
 #import "XYZCircularAnimation.h"
 
@@ -33,7 +33,7 @@ static NSMutableDictionary* allAnimations;
     
     // can just keep adding new animations as and when they are available
     [XYZAnimationContainer loadAnimation:[[XYZBounceAnimation alloc] init]];
-    //[XYZAnimationContainer loadAnimation:[[XYZRandomSwapAnimation alloc] init]];
+    [XYZAnimationContainer loadAnimation:[[XYZSwapAnimation alloc] init]];
     [XYZAnimationContainer loadAnimation:[[XYZContractExpandAnimation alloc] init]];
     [XYZAnimationContainer loadAnimation:[[XYZCircularAnimation alloc] init]];
     

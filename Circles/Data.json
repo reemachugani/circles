@@ -12,11 +12,11 @@
 												{
 																"HorizontalLine":
 																{
-																				"minNodes":2,
+																				"minNodes":4,
 																				"maxNodes":7,
 																				"size":0.80,
 																				"center":[50,50],
-																				"animations":[1,2]
+																				"animations":[3]
 																}
 												}
 								},
